@@ -25,8 +25,5 @@ public class Ejercicio2 {
 
         T1.start();
         T2.start();
-
-        T1.join();
-        T2.join();
     }
 }

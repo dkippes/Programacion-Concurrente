@@ -1,11 +1,11 @@
 import java.util.concurrent.Semaphore;
 
 public class Ejercicio7 {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         solucionC();
     }
 
-    private static void solucionA() throws InterruptedException {
+    private static void solucionA() {
         Semaphore permisoA = new Semaphore(1);
         Semaphore permisoB = new Semaphore(0);
 
@@ -27,12 +27,9 @@ public class Ejercicio7 {
 
         T1.start();
         T2.start();
-
-        T1.join();
-        T2.join();
     }
 
-    private static void solucionB() throws InterruptedException {
+    private static void solucionB() {
         Semaphore permisoA = new Semaphore(1);
         Semaphore permisoB = new Semaphore(0);
 
@@ -54,12 +51,9 @@ public class Ejercicio7 {
 
         T1.start();
         T2.start();
-
-        T1.join();
-        T2.join();
     }
 
-    private static void solucionC() throws InterruptedException {
+    private static void solucionC() {
         Semaphore permisoA = new Semaphore(2);
         Semaphore permisoB = new Semaphore(0);
 
@@ -80,8 +74,5 @@ public class Ejercicio7 {
 
         T1.start();
         T2.start();
-
-        T1.join();
-        T2.join();
     }
 }

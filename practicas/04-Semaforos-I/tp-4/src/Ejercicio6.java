@@ -6,7 +6,7 @@ public class Ejercicio6 {
         valor0();
     }
 
-    private static void valor3() throws InterruptedException {
+    private static void valor3() {
         Semaphore permisoX = new Semaphore(0);
 
         Thread T1 = new Thread(() -> {
@@ -23,13 +23,10 @@ public class Ejercicio6 {
         T1.start();
         T2.start();
 
-        T1.join();
-        T2.join();
-
         System.out.println(x);
     }
 
-    private static void valor1() throws InterruptedException {
+    private static void valor1() {
         Semaphore permisoX = new Semaphore(0);
         Semaphore permisoY = new Semaphore(0);
 
@@ -49,13 +46,10 @@ public class Ejercicio6 {
         T1.start();
         T2.start();
 
-        T1.join();
-        T2.join();
-
         System.out.println(x);
     }
 
-    private static void valor0() throws InterruptedException {
+    private static void valor0() {
         Semaphore permisoYZ = new Semaphore(0);
 
         Thread T1 = new Thread(() -> {
@@ -71,9 +65,6 @@ public class Ejercicio6 {
 
         T1.start();
         T2.start();
-
-        T1.join();
-        T2.join();
 
         System.out.println(x);
     }

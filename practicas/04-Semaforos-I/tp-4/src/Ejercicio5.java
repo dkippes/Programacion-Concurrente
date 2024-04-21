@@ -3,7 +3,7 @@ import java.util.concurrent.Semaphore;
 // TODO: Duda respecto al ejercicio
 public class Ejercicio5 {
     static int x = 0;
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Semaphore permiso2 = new Semaphore(0);
         Semaphore permiso3 = new Semaphore(0);
 
@@ -26,10 +26,6 @@ public class Ejercicio5 {
         T1.start();
         T2.start();
         T3.start();
-
-        T1.join();
-        T2.join();
-        T3.join();
 
         System.out.println(x);
     }

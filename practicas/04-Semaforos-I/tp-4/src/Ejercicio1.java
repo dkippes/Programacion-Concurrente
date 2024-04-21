@@ -1,7 +1,7 @@
 import java.util.concurrent.Semaphore;
 
 public class Ejercicio1 {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Semaphore permisoF = new Semaphore(0);
         Semaphore permisoC = new Semaphore(0);
 
@@ -23,8 +23,5 @@ public class Ejercicio1 {
 
         T1.start();
         T2.start();
-
-        T1.join();
-        T2.join();
     }
 }

@@ -3,7 +3,7 @@ import java.util.concurrent.Semaphore;
 public class Ejercicio3 {
     private static final Object lock = new Object();
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Semaphore permisoI = new Semaphore(0);
         Semaphore permisoO = new Semaphore(0);
         Semaphore permisoOk = new Semaphore(0);
@@ -33,10 +33,6 @@ public class Ejercicio3 {
         T1.start();
         T2.start();
         T3.start();
-
-        T1.join();
-        T2.join();
-        T3.join();
     }
 
     private static void print(String texto) {
