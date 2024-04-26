@@ -1,18 +1,17 @@
+package ej2;
+
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.Thread.sleep;
 
-public class Ejercicio2B {
+public class Ejercicio2A {
     public static void main(String[] args) throws InterruptedException {
-        solucionB();
+        solucionA();
     }
 
-    private static void solucionB() throws InterruptedException {
-        // Gente para este a oeste
-        // Gente para oeste a este
+    private static void solucionA() throws InterruptedException {
         AtomicInteger costa = new AtomicInteger(); // Este 0, Oeste 1
-        Semaphore capacidadBote = new Semaphore(4);
         AtomicInteger personaId = new AtomicInteger();
         Semaphore permisoSubir = new Semaphore(0);
         Semaphore permisoBajar = new Semaphore(0);
@@ -20,22 +19,10 @@ public class Ejercicio2B {
         Semaphore personaMutex = new Semaphore(1);
         Semaphore boteMutex = new Semaphore(1);
         Semaphore permisoVolverALaCosta = new Semaphore(0);
-
-        int[] personasEste = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int[] personasOeste = {11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+        int[] personas = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         Thread bote = new Thread(() -> {
             while (true) {
-                if (costa.get() == 0) {
-                    // Este
-                    System.out.println("Bote se mueve a la costa Oeste");
-                    capacidadBote.acquireUninterruptibly();
-                }
-                if (costa.get() == 1) {
-                    // Oeste
-                    System.out.println("Bote se mueve a la costa Este");
-                    capacidadBote.acquireUninterruptibly();
-                }
                 boteMutex.acquireUninterruptibly();
                 permisoSubir.acquireUninterruptibly();
                 System.out.println("Bote se mueve a la costa " + costa);
@@ -44,6 +31,7 @@ public class Ejercicio2B {
                 permisoViajando.release();
                 permisoBajar.acquireUninterruptibly();
                 System.out.println("Bote se mueve a la costa " + costa);
+                costa.set(1 - costa.get());
                 boteMutex.release();
                 permisoVolverALaCosta.release();
             }
@@ -51,20 +39,23 @@ public class Ejercicio2B {
 
         Thread persona = new Thread(() -> {
             while (true) {
-                if (costa.get() == 0) {
-                    // Este
-                    System.out.println("Persona " + personaId + " se sube al bote");
-                    capacidadBote.acquireUninterruptibly();
-                }
-                if (costa.get() == 1) {
-                    // Oeste
-                    capacidadBote.acquireUninterruptibly();
-                }
+                personaMutex.acquireUninterruptibly();
+                System.out.println("Persona " + personaId + " se sube al bote");
+                permisoSubir.release();
+                permisoViajando.acquireUninterruptibly();
+                System.out.println("Persona " + personaId + " se baja del bote");
+                permisoBajar.release();
+                personaId.getAndIncrement();
+                permisoVolverALaCosta.acquireUninterruptibly();
+                personaMutex.release();
             }
         });
 
         bote.start();
         persona.start();
+
+        bote.join();
+        persona.join();
     }
 
     private static void viajarEnBote() {

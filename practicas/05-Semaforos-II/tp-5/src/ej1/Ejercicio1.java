@@ -1,3 +1,5 @@
+package ej1;
+
 import java.util.concurrent.Semaphore;
 
 // Arreglar los 50 N impares -
