@@ -1,0 +1,14 @@
+
+g	java:S1124"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ë¨“³ò1
+g	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ë¨“³ò1
+
+java:S3008	"LRename this field "N" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÙğùÿÿÿÿJ$618aba56-4f99-4b6b-b071-879c1e2bf1b4
+“
+java:S1130
+"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78ÿ¨“³ò1
+{
+java:S21423"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8†©“³ò1
+G	java:S1066"+Replace this use of System.out by a logger.(ÎÊ¼®8ˆ©“³ò1
+{
+java:S2142="^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8Š©“³ò1
+L	java:S106@"+Replace this use of System.out by a logger.(Ø´Ø“úÿÿÿÿ8‹©“³ò1

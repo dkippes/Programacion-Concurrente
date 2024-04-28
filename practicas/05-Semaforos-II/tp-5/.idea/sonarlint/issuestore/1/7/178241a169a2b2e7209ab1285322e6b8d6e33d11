@@ -1,0 +1,14 @@
+
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÉË‚“8àøŠíñ1J$0006c38c-413c-43b3-a1db-8d857c722ec0
+—
+java:S3008"TRename this field "NPersonas" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úÙŸ­8¡òĞ´ò1J$1ca7cc53-9341-406a-9303-a2ddff3ee2a7
+¹
+java:S1130	"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78ëøŠíñ1J$f7ff1a5a-bf92-4b7d-9c17-5e793d36ce39
+m	java:S106"+Replace this use of System.out by a logger.(œÍäë8íøŠíñ1J$753cac08-23b8-4aa4-ae33-879ae7083f19
+r	java:S106"+Replace this use of System.out by a logger.(ÀŸ½’şÿÿÿÿ8±ıä´ò1J$1ba0a337-9580-49e6-9f7f-f6ce2f677d8a
+l	java:S106"+Replace this use of System.out by a logger.(Ú¶ã58º°ì´ò1J$d58de4f7-d10d-44c6-ad66-bf2b044b1a55
+m	java:S106"+Replace this use of System.out by a logger.(ØÑ˜8¼°ì´ò1J$2ac968c6-5899-412d-8695-7f9624947628
+m	java:S106$"+Replace this use of System.out by a logger.(¹ŞÈ×8¿°ì´ò1J$35b04900-db87-49ef-bff3-0bd8bffe0b6a
+r	java:S106)"+Replace this use of System.out by a logger.(Ïâíıÿÿÿÿ8¹«ò´ò1J$49cd328d-b87d-4a32-9199-c989e55283f0
+¡
+java:S21426"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8Ä°ì´ò1J$f03fcec7-179d-4bc1-b0a5-06906ea3fc16

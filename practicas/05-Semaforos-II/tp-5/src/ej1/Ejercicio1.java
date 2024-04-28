@@ -6,6 +6,7 @@ import java.util.concurrent.Semaphore;
 public class Ejercicio1 {
     private static int N = 3; // 9
     private static int sum = 0;
+
     public static void main(String[] args) {
         Semaphore permSiguienteNImpar = new Semaphore(1);
         Semaphore permSumarImpar = new Semaphore(0);

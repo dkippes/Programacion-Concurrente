@@ -1,0 +1,14 @@
+
+”	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Îê¬>J$55f06b01-6f22-4683-bc0d-cdb7e8ef1d79
+q
+java:S3008"TRename this field "NPersonas" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úÙŸ­8ÉÄû´ò1
+“
+java:S1130	"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78ÍÄû´ò1
+G	java:S106"+Replace this use of System.out by a logger.(œÍäë8ÔÄû´ò1
+L	java:S106"+Replace this use of System.out by a logger.(ÀŸ½’şÿÿÿÿ8ÖÄû´ò1
+F	java:S106"+Replace this use of System.out by a logger.(Ú¶ã58ØÄû´ò1
+G	java:S106"+Replace this use of System.out by a logger.(ØÑ˜8ÚÄû´ò1
+G	java:S106$"+Replace this use of System.out by a logger.(¹ŞÈ×8İÄû´ò1
+L	java:S106)"+Replace this use of System.out by a logger.(Ïâíıÿÿÿÿ8ßÄû´ò1
+š
+java:S21426"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$741431ba-ad29-4ad3-acd4-ce33d11167d4

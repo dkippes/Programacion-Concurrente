@@ -1,0 +1,14 @@
+
+	java:S1120"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8êö…³ò1J$1da47c9c-7f34-413c-b8b2-a34fa4b6a151
+	java:S112:"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ëö…³ò1J$6e24b861-3abe-4a17-aa05-3f8092a3385c
+”
+java:S3008	"LRename this field "N" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÙğùÿÿÿÿ8ùö…³ò1J$b0de01f1-6a18-4229-b816-4cddb76a47a5
+“
+java:S1130
+"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78÷ê†³ò1
+¡
+java:S2142/"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8Š÷…³ò1J$9de6d4b8-0b04-4807-a9ec-bebcb745e960
+m	java:S1062"+Replace this use of System.out by a logger.(ÎÊ¼®8÷…³ò1J$75ffc41c-cefa-4ead-8915-0ac9d705e515
+¡
+java:S21429"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8÷…³ò1J$9fde2ab6-0886-4a79-82eb-725e7431a97b
+r	java:S106<"+Replace this use of System.out by a logger.(Ø´Ø“úÿÿÿÿ8÷…³ò1J$e2eb834b-e65b-4338-ae20-80e9b2bfd09c
