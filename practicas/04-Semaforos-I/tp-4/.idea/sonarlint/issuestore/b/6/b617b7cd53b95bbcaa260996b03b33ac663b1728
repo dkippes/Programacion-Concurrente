@@ -1,0 +1,21 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼çÎË
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š³Ôšùÿÿÿÿ
+f	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼çÎË
+k	java:S117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š³Ôšùÿÿÿÿ
+f	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼çÎË
+k	java:S117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š³Ôšùÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+s
+java:S4144 "XUpdate this method so that its implementation is not identical to "solucionA" on line 8.(ôÈËœÿÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(…‘ÉÑýÿÿÿÿ
+@	java:S106"+Replace this use of System.out by a logger.(ñª•ó
+E	java:S106'"+Replace this use of System.out by a logger.(…‘ÉÑýÿÿÿÿ
+@	java:S106/"+Replace this use of System.out by a logger.(ñª•ó
+E	java:S106?"+Replace this use of System.out by a logger.(…‘ÉÑýÿÿÿÿ
+@	java:S106F"+Replace this use of System.out by a logger.(ñª•ó
+D
+java:S1144".Remove this unused private "solucionA" method.(¡èû†
+I
+java:S1144 ".Remove this unused private "solucionB" method.(ôÈËœÿÿÿÿÿ

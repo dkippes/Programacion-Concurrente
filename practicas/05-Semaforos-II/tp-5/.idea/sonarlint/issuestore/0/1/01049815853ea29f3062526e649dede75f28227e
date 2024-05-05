@@ -1,0 +1,13 @@
+
+†	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$94210ce9-f55f-4b05-905b-c7b7c3c26e08
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(“¯¤úÿÿÿÿÿJ$cd428d77-2c26-4bb7-985f-621d0443e095
+Ã
+java:S1186	"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(º™Ú78£ÇŸÿó1J$e3273463-6d53-4197-b756-b5e22e8b0624
+š
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$2e7a83d3-d19b-4c7b-b02f-c97dda04690f
+u
+java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8¨ÇŸÿó1J$123dc9b3-3ddc-4e82-a3bf-a4630ab90b0f
+~
+java:S1128";Remove this unused import 'java.util.concurrent.Semaphore'.(î¸Îú8¨ÇŸÿó1J$e11d8f19-95e5-4141-b048-08007bcf3fd7
+Ž
+java:S1128"FRemove this unused import 'java.util.concurrent.atomic.AtomicInteger'.(¿êäœøÿÿÿÿ8¨ÇŸÿó1J$1d8800bf-f4af-4a89-b653-fc8eac38ac2f

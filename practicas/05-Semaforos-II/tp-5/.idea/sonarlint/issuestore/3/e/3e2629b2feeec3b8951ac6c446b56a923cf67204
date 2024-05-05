@@ -1,14 +1,19 @@
 
-”	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Îê¬>J$ebe10291-c0d1-4951-a739-7a191723eeb6
-—
-java:S3008"TRename this field "NPersonas" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úÙŸ­8ÉÄû´ò1J$d578d2c6-1907-4789-b201-4a54d0be2605
+Œ
+java:S11923"IDefine a constant instead of duplicating this literal "Persona " 4 times.(€µ­ó8Ä¥ıëò1J$0e429da7-f983-412a-ba56-75a9b2746232
+›	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Îê¬>8Æ¥ıëò1J$28c89864-de12-4d54-bd89-a1a19975ac31
+”
+java:S3008"LRename this field "N" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ï©ıÿÿÿÿ8Ô¥ıëò1J$07999a49-30a1-4724-bfa3-60c5f2f5edbf
 ¹
-java:S1130	"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78ÍÄû´ò1J$99f19cad-774f-46fb-86d6-58349e3d439a
-m	java:S106"+Replace this use of System.out by a logger.(œÍäë8ÔÄû´ò1J$7d3c4881-9565-485a-bd66-ea8ad5682798
-r	java:S106"+Replace this use of System.out by a logger.(ÀŸ½’şÿÿÿÿ8ÖÄû´ò1J$2d0864f8-8ea9-4807-8d77-f54543f61031
-l	java:S106"+Replace this use of System.out by a logger.(Ú¶ã58ØÄû´ò1J$a867f48a-acd2-4d4a-a0f3-4e8d9512c6fd
-m	java:S106"+Replace this use of System.out by a logger.(ØÑ˜8ÚÄû´ò1J$700a3a4e-f306-423e-838b-fed161350dd7
-m	java:S106$"+Replace this use of System.out by a logger.(¹ŞÈ×8İÄû´ò1J$e083c6cb-f200-42be-8f70-5254ac9d3c16
-r	java:S106)"+Replace this use of System.out by a logger.(Ïâíıÿÿÿÿ8ßÄû´ò1J$e5d83a04-1397-4843-b03d-58140e25770d
-š
-java:S21426"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$718ec582-ba1c-462e-9817-62681406fcc2
+java:S1130
+"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78Ø¥ıëò1J$bfc94f3b-8bf8-48fc-8d25-fc849aa3fe0d
+m	java:S106"+Replace this use of System.out by a logger.(šìÕˆ8İ¥ıëò1J$6acf8786-0f84-4d3a-9a9f-0723e0d39f32
+m	java:S106"+Replace this use of System.out by a logger.(Û­›š8ß¥ıëò1J$18dbb977-32b1-4bca-b814-f41ab4269844
+m	java:S106#"+Replace this use of System.out by a logger.(¢Š³µ8à¥ıëò1J$cb12e852-85bf-479e-a7e2-859e5747976b
+m	java:S106%"+Replace this use of System.out by a logger.(£Ê‘ş8â¥ıëò1J$3a62c637-73c0-4955-bb30-8384e0318ac3
+m	java:S1063"+Replace this use of System.out by a logger.(€µ­ó8ä¥ıëò1J$b7fe1dc0-9b67-442c-aa8a-0c9e32ff413a
+r	java:S1067"+Replace this use of System.out by a logger.(£Ø½Ôıÿÿÿÿ8å¥ıëò1J$f00dfbaa-fd63-4a84-83ec-f96006ceb9d0
+m	java:S106A"+Replace this use of System.out by a logger.(€µ­ó8æ¥ıëò1J$158f495d-3719-496e-a4f7-178bbcd9e3a5
+r	java:S106E"+Replace this use of System.out by a logger.(£Ø½Ôıÿÿÿÿ8æ¥ıëò1J$c7283a6b-e717-4bbe-93e5-4c12b5fa41b6
+¡
+java:S2142P"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8è¥ıëò1J$77682cf0-1767-4e49-be51-bf028dd67120

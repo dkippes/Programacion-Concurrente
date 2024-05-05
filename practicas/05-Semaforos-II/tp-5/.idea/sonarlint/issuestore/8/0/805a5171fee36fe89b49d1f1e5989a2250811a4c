@@ -1,27 +1,0 @@
-
-`	java:S112M"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(”»À
-m
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(şÍ–éıÿÿÿÿ
-\
-java:S1854"ARemove this useless assignment to local variable "personasOeste".(Ö†€¡üÿÿÿÿ
-[
-java:S1854"@Remove this useless assignment to local variable "personasEste".(¼à¢Üúÿÿÿÿ
-V
-java:S1854"@Remove this useless assignment to local variable "personaMutex".(˜Ëªú
-’
-java:S1130"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(şÍ–éıÿÿÿÿ
-G
-java:S1481"1Remove this unused "personaMutex" local variable.(˜Ëªú
-L
-java:S1481"1Remove this unused "personasEste" local variable.(¼à¢Üúÿÿÿÿ
-M
-java:S1481"2Remove this unused "personasOeste" local variable.(Ö†€¡üÿÿÿÿ
-E	java:S106!"+Replace this use of System.out by a logger.(·ÈÁüÿÿÿÿ
-@	java:S106&"+Replace this use of System.out by a logger.(Û™ÿï
-?	java:S106+"+Replace this use of System.out by a logger.(Ë³Â
-?	java:S1060"+Replace this use of System.out by a logger.(Ë³Â
-?	java:S106:"+Replace this use of System.out by a logger.(Àÿû+
-t
-java:S2142L"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
-E	java:S106K"+Replace this use of System.out by a logger.(¥Ï«Èùÿÿÿÿ

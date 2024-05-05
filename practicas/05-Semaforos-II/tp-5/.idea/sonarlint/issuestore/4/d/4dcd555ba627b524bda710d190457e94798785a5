@@ -1,0 +1,13 @@
+
+	java:S112J"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8€Ûèô1J$4e75f3dd-a325-4042-98be-8486066cd8f1
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(“¯¤úÿÿÿÿÿ8Ûèô1J$f7cbc996-5676-42cf-b231-a317bd0df1b8
+”
+java:S3776	"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(º™Ú78ôš³ô1J$0b514ee8-f1a1-44bd-9e6e-c0dbc83f71e0
+¹
+java:S1130	"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78õš³ô1J$045584bb-dc90-4730-8c70-5d6268e50c32
+m	java:S106!"+Replace this use of System.out by a logger.(ÌåÑ8ûš³ô1J$c93774ca-09c8-4baf-a7d2-88b296492efe
+r	java:S106#"+Replace this use of System.out by a logger.(ŸÄÍùÿÿÿÿ8ûš³ô1J$2c893b0e-4812-4cfd-9f25-996e4c903f5e
+m	java:S1065"+Replace this use of System.out by a logger.(ÌåÑ8üš³ô1J$887ecafb-1440-42d7-bcad-452cdf619cf2
+r	java:S1067"+Replace this use of System.out by a logger.(ŸÄÍùÿÿÿÿ8üš³ô1J$9a63a4dc-502f-4ae8-bfa6-d0c6b395bb18
+¡
+java:S2142I"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8’Ûèô1J$4f3eac13-f276-4135-9647-cdcb07832c32

@@ -1,0 +1,11 @@
+
+	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ëª¤úó1J$3c1672c9-689a-4ec8-8f7b-4de1cba03387
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Èô´Ïúÿÿÿÿ8ìª¤úó1J$7235b9e3-5f6a-4625-a01a-27f90cb755b2
+¹
+java:S1130"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78öª¤úó1J$953bd757-6ed1-4421-9c8a-71d6a6ae0b6d
+m	java:S106"+Replace this use of System.out by a logger.(‚ê°8–Ã¥úó1J$eb77e994-39f8-46b1-8938-519e53f9df43
+m	java:S106"+Replace this use of System.out by a logger.(ÛÓçÈ8—Ã¥úó1J$ff289bab-4c5a-476c-a046-1841c105759e
+r	java:S106"+Replace this use of System.out by a logger.(ÚŒ“›úÿÿÿÿ8¯¡§úó1J$cb8a2dbf-67cf-4476-a274-0ba42e4a77dc
+r	java:S106"+Replace this use of System.out by a logger.(¹³·’ùÿÿÿÿ8Òà¨úó1J$53cc2deb-dfdb-4440-8bfe-86199149f33f
+¡
+java:S2142)"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8şª¤úó1J$805ca43b-3ba4-4d69-bc49-777695c3d1d6

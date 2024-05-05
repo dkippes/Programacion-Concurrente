@@ -1,0 +1,21 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼çÎË
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š³Ôšùÿÿÿÿ
+f	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼çÎË
+k	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š³Ôšùÿÿÿÿ
+f	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼çÎË
+k	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š³Ôšùÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+S
+java:S1659">Declare "z" and all following declarations on a separate line.(¥¯Õ
+Œ
+java:S1130"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú7
+E	java:S106"+Replace this use of System.out by a logger.(µÏ…èùÿÿÿÿ
+E	java:S1061"+Replace this use of System.out by a logger.(µÏ…èùÿÿÿÿ
+E	java:S106E"+Replace this use of System.out by a logger.(µÏ…èùÿÿÿÿ
+Q	java:S125J"<This block of commented-out lines of code should be removed.(ƒ”ï÷
+A
+java:S1144	"+Remove this unused private "valor3" method.(×Ä€Ð
+F
+java:S1144"+Remove this unused private "valor1" method.(ƒŽ­ãüÿÿÿÿ

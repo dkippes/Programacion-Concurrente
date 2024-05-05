@@ -1,0 +1,17 @@
+
+	java:S1126"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹ŒËˆô1J$c47ad1ca-5583-4338-b917-aaf9ee467cb8
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Èô´Ïúÿÿÿÿ8¶§ ˆô1J$b8ed6980-3f56-4426-98b7-139cd30afe66
+¹
+java:S1130	"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78¿§ ˆô1J$d7f99d72-0448-4974-a0fc-cd25fd38966f
+~	java:S125"<This block of commented-out lines of code should be removed.(Æ8ÀÖÍˆô1J$46ad5740-8a0b-4f6d-9925-2be35858e3fa
+m	java:S106"+Replace this use of System.out by a logger.( ê½í8ÈŒËˆô1J$8b912cf6-5296-4b7a-aa11-6bb643011f15
+m	java:S106"+Replace this use of System.out by a logger.(ÛÓçÈ8ÉŒËˆô1J$bdb1a865-1d97-49ab-b2dc-aafa74293e25
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(àÌ²Œùÿÿÿÿ8ÿÎˆô1J$00f8872e-21e6-41b3-a3f6-e061305a34e5
+m	java:S106&"+Replace this use of System.out by a logger.(óÂó‘8ÊŒËˆô1J$d8c3b098-84f5-426d-beeb-7ed56e005010
+~	java:S125'"<This block of commented-out lines of code should be removed.(‡êÌ¹8ÿÎˆô1J$a241e760-ac41-40ee-9929-bab9184af87a
+r	java:S106*"+Replace this use of System.out by a logger.(¹³·’ùÿÿÿÿ8ËŒËˆô1J$4e75ae31-7bbe-414c-aef5-dd2ff7ebd11f
+ƒ	java:S125."<This block of commented-out lines of code should be removed.(Œ•ùğıÿÿÿÿ8€Îˆô1J$612a078c-f5dd-47fe-9724-28a4cb0577a4
+¡
+java:S21425"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ÌŒËˆô1J$a6e709e7-3daf-4291-afd6-c6e8fbf35b6d
+
+java:S1128"FRemove this unused import 'java.util.concurrent.atomic.AtomicInteger'.(¿êäœøÿÿÿÿ8ƒëÊˆô1J$91ab312f-0594-4204-b410-601b0a781ce3

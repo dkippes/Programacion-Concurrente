@@ -1,0 +1,19 @@
+
+ö
+java:S1598"²This file "Ejercicio2BA.java" should be located in "ej2" directory, not in "/Users/dkippes/Desktop/Universidad/Programacion-Concurrente/practicas/05-Semaforos-II/tp-5/src/ej2/a".(”»À8µÍÈô1J$f3762c12-8fee-4041-a4f7-26a71eb8fc46
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(”»À8Æ¥ıëò1J$00d60487-e967-4b9b-94d2-21aab5cfe0aa
+”
+java:S3008"LRename this field "N" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ï©ıÿÿÿÿ8Ô¥ıëò1J$75cd91d4-9366-4692-bebd-7726e18393b5
+¹
+java:S1130
+"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78Ø¥ıëò1J$6d103fb1-2a07-4618-9f66-d926e0dd3f7f
+r	java:S106"+Replace this use of System.out by a logger.(ŠÖá¨üÿÿÿÿ8ß¥ıëò1J$1acbb15c-7fbd-40ca-b0c4-10de5222ef4e
+m	java:S106"+Replace this use of System.out by a logger.(Íıëò8å¥ıëò1J$f3d55c96-5469-4047-b062-bdb440dfc418
+m	java:S106#"+Replace this use of System.out by a logger.(—şÊÜ8ş¹Ëô1J$ce6f7bd7-3612-4121-a5d9-dec61c56514c
+m	java:S106&"+Replace this use of System.out by a logger.(Ş»‹ê8é©Ìô1J$7349edc8-be38-443a-96c9-775d6ebb01bb
+¡
+java:S21421"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8è¥ıëò1J$07a4abf2-dc95-4e45-aefc-3f42f28579a0
+
+java:S1128"FRemove this unused import 'java.util.concurrent.atomic.AtomicInteger'.(¿êäœøÿÿÿÿ8¢ŸÏô1J$19784f0b-7941-4ad3-8600-9393a4419d1c
+m
+java:S1068"%Remove this unused "N" private field.(’ï©ıÿÿÿÿ8í©Ìô1J$ad897b47-cbba-4d4c-abc0-c5976f8805e3

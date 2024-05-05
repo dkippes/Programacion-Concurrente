@@ -1,0 +1,18 @@
+
+…
+java:S1192)"IDefine a constant instead of duplicating this literal "Persona " 4 times.(€µ­óJ$bf1aa422-9b3a-41f7-9a8c-1d1b950fbed1
+”	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Îê¬>J$7e567db1-606c-4229-bcac-dfc56783ee3c
+
+java:S3008"LRename this field "N" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ï©ıÿÿÿÿJ$993c1854-0c5b-43f1-8d41-09c5fcb29a9d
+²
+java:S1130	"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú7J$805a6fa6-c6e2-48b4-98fe-3ebbd0e7d8a0
+f	java:S106"+Replace this use of System.out by a logger.(šìÕˆJ$00d494b4-7439-4ad2-b964-9a49491e4956
+f	java:S106"+Replace this use of System.out by a logger.(Û­›šJ$cbd30abd-cb8a-492a-835c-c4aff8703710
+f	java:S106"+Replace this use of System.out by a logger.(¢Š³µJ$a07984eb-299c-470c-a853-03227efbe6f4
+f	java:S106"+Replace this use of System.out by a logger.(£Ê‘şJ$9e7120db-8d3e-4677-8287-ba6c6601e9f6
+f	java:S106)"+Replace this use of System.out by a logger.(€µ­óJ$633bfe50-d474-4dc7-9387-9b59ff82ad04
+k	java:S106-"+Replace this use of System.out by a logger.(£Ø½ÔıÿÿÿÿJ$8913cc9c-a80f-4e28-b23c-700fa8917a57
+f	java:S1067"+Replace this use of System.out by a logger.(€µ­óJ$31dd4024-c7cf-42b9-9a45-667d02456c7e
+k	java:S106;"+Replace this use of System.out by a logger.(£Ø½ÔıÿÿÿÿJ$edf6a262-7719-4b2d-86a1-af20c511a6b0
+š
+java:S2142F"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$2d05e651-5f6c-41df-b4fb-17ee453f7548

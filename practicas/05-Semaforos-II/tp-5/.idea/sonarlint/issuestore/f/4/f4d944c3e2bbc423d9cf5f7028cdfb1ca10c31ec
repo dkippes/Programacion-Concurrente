@@ -1,0 +1,15 @@
+
+	java:S112,"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ëª¤úó1J$9d5e0278-6c0a-4fbf-9f5f-c325d7c3017d
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Èô´Ïúÿÿÿÿ8ìª¤úó1J$bcc38bae-a676-40f1-90fd-861f9a87000c
+j
+java:S2189""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8óª¤úó1J$4b390dc6-4810-45b1-aadb-12eee764d4ba
+¹
+java:S1130	"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78öª¤úó1J$bced82a1-42de-4a43-89a2-c455b7c1e610
+m	java:S106"+Replace this use of System.out by a logger.(‚ê°8–Ã¥úó1J$77af420c-a4ff-4ee6-ac21-154d8edd40ad
+m	java:S106"+Replace this use of System.out by a logger.(ÛÓçÈ8—Ã¥úó1J$9917742f-942b-4abe-b2ec-6d849b62c96c
+r	java:S106"+Replace this use of System.out by a logger.(ÚŒ“›úÿÿÿÿ8¯¡§úó1J$34f35813-2cad-455a-9485-da00c39ceffd
+r	java:S106"+Replace this use of System.out by a logger.(¹³·’ùÿÿÿÿ8Òà¨úó1J$b94843d5-13d5-4e30-9b50-4ddb3efa97a0
+¡
+java:S2142+"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8şª¤úó1J$0eb982be-d216-4e06-b649-59483da5177a
+
+java:S1128"FRemove this unused import 'java.util.concurrent.atomic.AtomicInteger'.(¿êäœøÿÿÿÿ8©ˆ´úó1J$f985d4cd-94fa-4e10-a388-ef3cc4846cbb
