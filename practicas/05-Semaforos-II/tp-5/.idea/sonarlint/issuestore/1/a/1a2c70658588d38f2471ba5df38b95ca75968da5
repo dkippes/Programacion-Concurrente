@@ -1,13 +1,13 @@
 
-	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¨¢ÚŠô1J$d1c40a54-af62-4f19-9a5f-41eb5698caf5
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(“¯¤úÿÿÿÿÿ8ª¢ÚŠô1J$1b1f99ef-ab0d-4601-a7d7-c73f50abbd7c
-n
-java:S3776	"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(º™Ú78ï™ñô1
-“
-java:S1130	"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78ğ™ñô1
-G	java:S106"+Replace this use of System.out by a logger.(ÌåÑ8ö™ñô1
-L	java:S106 "+Replace this use of System.out by a logger.(ŸÄÍùÿÿÿÿ8÷™ñô1
-G	java:S1060"+Replace this use of System.out by a logger.(ÌåÑ8ø™ñô1
-L	java:S1062"+Replace this use of System.out by a logger.(ŸÄÍùÿÿÿÿ8ø™ñô1
+	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¨¢ÚŠô1J$8a1dc3e2-78d8-43ff-a960-3e397aca4aeb
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(“¯¤úÿÿÿÿÿ8ª¢ÚŠô1J$0afabcf0-8d00-4752-8e4f-52a2064e6d12
+”
+java:S3776	"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(º™Ú78ï™ñô1J$33e7a760-6351-4de8-bac2-5f6846d850b2
+¹
+java:S1130	"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78ğ™ñô1J$0e449d3b-644d-4f80-8ccd-f8646b812d61
+m	java:S106"+Replace this use of System.out by a logger.(ÌåÑ8ö™ñô1J$33f98093-59f8-485a-a80f-d0f53fd83f5e
+r	java:S106 "+Replace this use of System.out by a logger.(ŸÄÍùÿÿÿÿ8÷™ñô1J$e86ea7d1-2fcc-4ddf-97f5-c5f811f09c5c
+m	java:S1060"+Replace this use of System.out by a logger.(ÌåÑ8ø™ñô1J$bd319ba7-75a8-4ae8-9c60-36d631dc8746
+r	java:S1062"+Replace this use of System.out by a logger.(ŸÄÍùÿÿÿÿ8ø™ñô1J$ca95e821-1f5d-4a58-be3e-9e20d73015fc
 ¡
-java:S2142C"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8·¢ÚŠô1J$e2623da9-809a-44f2-88be-86761f435761
+java:S2142C"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8·¢ÚŠô1J$5290bd2f-a85d-43a5-a34c-2f889e18c91d
