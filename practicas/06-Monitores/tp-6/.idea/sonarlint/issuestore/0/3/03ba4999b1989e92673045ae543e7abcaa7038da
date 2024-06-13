@@ -1,0 +1,8 @@
+
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¹èä»J$b98451f1-17cc-4ed0-b370-9afd27fa92a9
+•
+java:S2142"YEither re-interrupt this method or rethrow the "PoisonException" that can be caught here.(ùÂJ$bb573cd1-b667-47d7-93b2-0f96fba781e8
+e	java:S106"+Replace this use of System.out by a logger.(×³ÙEJ$3d11b383-6ead-44a1-a9c5-c1573c97ead1
+d	java:S108")Either remove or fill this block of code.(ùÂJ$3d19b095-81f0-4fda-993d-5fefabdfd405
+c
+java:S1128"'Remove this unused import 'ej3.Buffer'.(˜×› J$0bea5c3a-faa6-4fc6-bd50-dcb250a75cfa

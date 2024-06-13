@@ -1,0 +1,14 @@
+
+Q
+java:S1700"Rename field "buffer"(™”†ßJ$cc084d49-fa0d-48ea-96bc-b999ee510f1f
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ğÕ·–ùÿÿÿÿJ$433fcd8f-4fc4-43a2-8fd4-715761b1652a
+f	java:S106"+Replace this use of System.out by a logger.(œş†öJ$5996cd39-245a-4aeb-adcf-8756a79d5b22
+k	java:S106"+Replace this use of System.out by a logger.(¸ÌúÿÿÿÿJ$26f51edb-7ce2-4753-9ab1-88adddda78a2
+k	java:S106"+Replace this use of System.out by a logger.(ŞÚ›ºùÿÿÿÿJ$d50325a2-921a-43b2-a8d9-3e266f70451f
+k	java:S106"+Replace this use of System.out by a logger.(ú¶—±şÿÿÿÿJ$585afba0-087d-4427-a6ce-b266e62cf172
+k	java:S106"+Replace this use of System.out by a logger.(£«¾ÎÿÿÿÿÿJ$492fc320-e9ff-4de0-b030-13738a6281ae
+e	java:S106#"+Replace this use of System.out by a logger.(çˆÕ0J$0e52f67e-d970-4258-993d-95fab56dd439
+l
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±ÄøÿÿÿÿJ$0b5df803-fa67-4f52-9dbe-9afee40f6a81
+j
+java:S1128".Remove this unused import 'java.util.Objects'.(¼¸õ›J$789c83e3-b8a7-4983-a04a-051fdc41997b

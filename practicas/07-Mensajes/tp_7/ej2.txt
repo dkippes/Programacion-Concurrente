@@ -1,0 +1,29 @@
+Ejercicio 2. Se desea implementar un servidor que recibe mensajes de (exactamente) dos clientes
+distintos y muestra por pantalla la concatenaci ́on de un par de mensajes (uno de cada cliente).
+Cada cliente continuamente env ́ıa un mensaje y espera una cantidad aleatoria de tiempo. El
+servidor recibe los mensajes de los clientes y por cada par de mensajes recibidos muestra por
+pantalla su concatenaci ́on.
+
+global Channel c1 = new Channel();
+global Channel c2 = new Channel();
+
+process Servidor:
+    msg = "";
+    while(true) {
+        msg1 = c1.receive();
+        msg += msg1
+        print(msg);
+        msg2 = c2.receive();
+        msg += msg2
+        print(msg);
+    }
+
+process Client1(msg):
+    while(true) {
+        c1.send(msg);
+    }
+
+process Client2:
+    while(true) {
+        c2.send(msg);
+    }

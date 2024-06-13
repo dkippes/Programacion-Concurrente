@@ -1,0 +1,10 @@
+
+	java:S112
+"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÓğûÄÿ1J$0511cfcf-f7aa-4857-b1a4-21cf6a90989a
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Èô´ÏúÿÿÿÿJ$6f1ca5c4-bc99-4986-a06b-ee9a6d164f5a
+¡
+java:S2142	"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8àğûÄÿ1J$f191fc1f-7a55-4ea1-9cc1-aded87e45316
+t
+java:S1602",Remove useless curly braces around statement(Òáî™úÿÿÿÿ8äğûÄÿ1J$f6ca81eb-1535-4144-83d7-b8a54522041c
+
+java:S1612"9Replace this lambda with method reference 'promise::get'.(Òáî™úÿÿÿÿ8İäÅÿ1J$a60a6807-87a3-477e-b5c6-7f64d8e68574

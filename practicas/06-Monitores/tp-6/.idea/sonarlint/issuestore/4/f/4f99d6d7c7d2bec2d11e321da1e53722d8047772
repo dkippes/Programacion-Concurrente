@@ -1,0 +1,6 @@
+
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ðÕ·–ùÿÿÿÿJ$e2deee67-e117-4423-950a-bae0c4e16b9a
+²
+java:S1130"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú7J$ae535c4e-ee4d-4f89-b08e-e07f6e360cec
+f
+java:S1128"*Remove this unused import 'ej2.Semaphore'.(ûâÕ”J$08a0fa8c-477f-40b7-b4b3-60ad5e9b2fd7
