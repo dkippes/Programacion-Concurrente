@@ -1,0 +1,19 @@
+Ejercicio 3. Se desea definir un servidor que funcione como una variable compartida a la que
+los clientes pueden acceder mediante oportunos mensajes. Proponer una soluci ́on.
+
+global Channel channel = new Channel()
+
+repeat n thread {
+    process client(numero):
+        cprivado = new Channel()
+        req = new Request(numero, cprivado)
+        channel.send(req)
+        print(cprivado.receive())
+}
+
+process servidor:
+    while(true) {
+        req = channel.receive()
+        req.cprivado.send("Hola cliente " + req.numero)
+    }
+

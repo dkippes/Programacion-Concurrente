@@ -53,3 +53,29 @@ J
 src/practico/ej3/Main.java,4/9/49d56e60a97f56eb493ce438e92b2a703495c688
 I
 src/practico/Channel.java,8/6/865245157a714b9fbd2dc9956ac08dec97d19be4
+M
+src/practico/ej3/Request.java,d/4/d41fe4d72d40b166ac1b879b36b5192e982a6334
+N
+src/practico/ej3/Servidor.java,d/9/d979162682b8aed4267ac49a9555bbdbfe138cad
+M
+src/practico/ej3/Cliente.java,f/d/fd33bb069e5dde09b9e84fdc884b8ba59e23b2db
+J
+src/practico/ej4/Main.java,8/5/852572e1652cffd319e0902c5def6661d8d77189
+N
+src/practico/ej4/Servidor.java,d/b/db3ad9cddf94d9fa5192afcfeb75c55ca31600e9
+M
+src/practico/ej4/Cliente.java,e/c/ecf1dcba8982c8f8041a430097eef08f2c7cc5a7
+P
+ src/practico/ej4/a/Servidor.java,b/b/bbe3f5a39ffe2799966a378a1ac0ff62c2c7c4cd
+O
+src/practico/ej4/a/Cliente.java,7/b/7bd8cd3f0273b699425287246fa1822fcfbd1d51
+L
+src/practico/ej4/a/Main.java,0/b/0bc7980fccbda4c415529238b15c3a3708dd6a67
+L
+src/practico/ej4/b/Main.java,b/5/b51428a96c5880c1dd4a7187905dc44b060ebad5
+O
+src/practico/ej4/b/Cliente.java,7/9/795b3f5420d4cb9b4ae923df36a8895c4354bf04
+P
+ src/practico/ej4/b/Servidor.java,b/0/b07054d94c20b95949b23e8a8d2f974a09f6d1e8
+O
+src/practico/ej4/b/Request.java,2/c/2c8ae78207b47ae8a1715e5a5a934b6c255ed71b

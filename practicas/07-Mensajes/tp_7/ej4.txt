@@ -1,0 +1,39 @@
+Ejercicio 4. Considerar un servidor de trimming que recibe un String y responde con el resultado
+de aplicar la funci ́on trim al valor recibido.
+a) Dar una soluci ́on para el caso en que el servidor resuelve solicitudes de un  ́unico cliente a
+la vez.
+b) Extender la soluci ́on para soportar un n ́umero no acotado de clientes (i.e., con esquema de
+conexi ́on).
+
+a)
+global Channel channelServidor = new Channel()
+global Channel channelCliente = new Channel()
+
+process ServidorTrimming:
+    while(true) {
+        String msg = channelServidor.receive()
+        String msgTrim = msg.trim()
+        channelCliente.send(msgTrim)
+    }
+
+process Client(msg):
+    channelServidor.send(msg)
+    String msgTrim = channelCliente.receive()
+    print("Msg Trim: " + msgTrim)
+
+b)
+global Channel channel = new Channel()
+
+process ServidorTrimming:
+    while(true) {
+        Request req = channel.receive()
+        String msgTrim = req.msg.trim()
+        req.cprivado.send(msgTrim)
+    }
+
+repeat n thread:
+    process Client(msg):
+        Channel cprivado = new Channel()
+        Request req = new Request(msg, cprivado)
+        channel.send(req)
+        print("Msg Trim: " + cprivado.receive())
