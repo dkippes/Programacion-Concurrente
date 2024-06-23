@@ -31,9 +31,15 @@ process ServidorTrimming:
         req.cprivado.send(msgTrim)
     }
 
-repeat n thread:
-    process Client(msg):
-        Channel cprivado = new Channel()
-        Request req = new Request(msg, cprivado)
-        channel.send(req)
-        print("Msg Trim: " + cprivado.receive())
+while(true) {
+    thread Client(msg):
+            Channel cprivado = new Channel()
+            Request req = new Request(msg, cprivado)
+            channel.send(req)
+            print("Msg Trim: " + cprivado.receive())
+}
+
+Request {
+    string msg,
+    Channel cprivado
+}

@@ -1,0 +1,43 @@
+Ejercicio 7. Se cuenta con un servicio S que permite hacer calculos numericos computacional-
+mente costosos. S recibe cada pedido de calculo a realizar en un mensaje sobre el canal 1. El
+servicio toma el requerimiento, lo procesa y envıa la respuesta a traves del canal 2. Es decir,
+un cliente C envıa un mensaje sobre el canal 1 y espera la respuesta en el canal 2. Como con-
+secuencia de un mal diseno el cliente puede enviar varios pedidos de calculo sin esperar a que
+los anteriores hayan sido procesados, y por otro lado S no garantiza el funcionamiento correcto
+cuando recibe un nuevo mensaje sobre el canal 1 y aun esta procesando un mensaje anterior. Por
+este motivo, se desea implementar otro servicio proxy P que intermedie la interaccion entre C
+y S. La intencion es que el cliente C no interactuara directamente con S (es decir, no usara los
+canales 1 y 2), en su lugar interactuara solo con P sobre los canales 3 y 4. La idea es que P
+reenvıe a S los mensajes que recibe de C y viceversa pero asegurando que S nunca recibira un
+nuevo mensaje sobre el canal 1 hasta que no haya concluido de procesar el pedido anterior.
+
+a) Dar una implementacion para P. La solucion propuesta debe funcionar asumiendo que S
+no cambia y en C solo se renombran los canales 1 y 2 por 3 y 4.
+b) Suponer ahora que S puede manejar a lo sumo N mensajes concurrentes de manera co-
+rrecta. Extender la solucion propuesta anteriormente para P de manera tal de maximizar
+la concurrencia. Asumir que S produce los resultados respetando el orden en que llegan
+los pedidos siempre y cuando haya a lo sumo N pedidos concurrentes. ¿Puede asumir que
+su solucion tambien esta devolviendo los resultados en orden?
+c) Extender la implementacion de P para aprovechar el hecho de que existen dos copias de
+S (una que usa los canales 1 y 2 y la otra que usa los canales 11 y 22). P debe aprovechar
+las dos copias de S a fin de maximizar la concurrencia. (Variante difıcil: considerar que al
+cliente se le deben retornar los resultados en el orden en que hizo los requerimientos.)
+
+a)
+global Channel c3 = new Channel()
+global Channel c4 = new Channel()
+
+process servicioP:
+    // Intermedia interaccion de S y C
+    // C No usa los canales c1 y c2 -> Usa C3 y C4 de P
+    // Reenvia a S los msgs de C
+    // S solo recibe un solo mensaje en el canal 1 hasta que haya concluido el anterior
+
+process servicioS:
+    // Recibe en c1 pedido de calculo
+    // Procesa calculos numericos complejos 
+    // Envia respuesta en c2
+
+process clienteC:
+    // Envia mensaje por c3
+    // Espera respuesta por c4

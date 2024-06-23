@@ -1,24 +1,19 @@
 package ej5;
 
 public class Event {
-    private boolean published = false;
-    private int suscriptors = 0;
+    private int cantidadPublicaciones = 0;
 
     synchronized void publish() {
-        published = true;
-        for (int i = 0; i < suscriptors; i++) {
-            this.notify();
-        }
-        System.out.println("Publicado");
-        suscriptors = 0;
+        System.out.println("-------- Hay nueva publicación --------");
+        cantidadPublicaciones++;
+        notifyAll();
     }
 
     synchronized void suscribe() throws InterruptedException {
-        suscriptors++;
-        System.out.println("Suscrito N°" + suscriptors);
-        while (!published) {
-            this.wait();
+        System.out.println("Hay nuevo sub");
+        int current = cantidadPublicaciones; // Guarda el current para comparar después
+        while (current == cantidadPublicaciones) {
+            wait();
         }
-        published = false;
     }
 }

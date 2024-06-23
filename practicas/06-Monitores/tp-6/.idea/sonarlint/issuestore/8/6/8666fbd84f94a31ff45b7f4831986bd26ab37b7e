@@ -1,0 +1,20 @@
+
+†	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$226901a7-f095-4201-8b7c-c8d2c66b0421
+†	java:S1129"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$12c5d72a-9729-441d-84c9-00f2c539a7b6
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(“¯¤úÿÿÿÿÿJ$1fd903a3-901e-4ef3-81ad-26550e6621a3
+j
+java:S1940")Use the opposite operator ("!=") instead.(›Ï×ªüÿÿÿÿJ$c1babd87-c7bf-469d-b9f3-23f21d49d90c
+k	java:S106"+Replace this use of System.out by a logger.(¿Š¨ÎþÿÿÿÿJ$07d59470-b604-4157-a331-54df44dc0308
+k	java:S106"+Replace this use of System.out by a logger.(õú‘½ûÿÿÿÿJ$40462449-d5ca-4162-95e5-aa8c39ac553c
+q
+java:S2446"0"notify" may not wake up the appropriate thread.(óÄ£¶øÿÿÿÿJ$35c2125c-0a8c-4cb2-b167-29985bf18143
+k	java:S106 "+Replace this use of System.out by a logger.(ÔšŒèûÿÿÿÿJ$db8b7a36-5b2f-4f9a-964a-3b6628cb5fe8
+f	java:S106&"+Replace this use of System.out by a logger.(úÄ”¥J$c59fed0f-def5-4a86-b845-b9918008b8f6
+f	java:S106+"+Replace this use of System.out by a logger.(ì‘Ú÷J$479dd6a5-5680-4047-9a0d-fffa45272878
+š
+java:S2142."^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$fe9260d2-88ac-4a4b-9d3d-e381422485bd
+k	java:S1065"+Replace this use of System.out by a logger.(ƒ¥•»úÿÿÿÿJ$41961c0f-fa24-4439-a3a9-8be4a6d2ee03
+š
+java:S21428"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$ffe14c18-6081-48f1-8446-8d8e43ce73f0
+r
+java:S1128"1Remove this unused import 'java.io.Serializable'.(èãîÂÿÿÿÿÿJ$06342888-4d54-4a0f-9595-8ee480b47464

@@ -7,7 +7,7 @@ import ej3.Productor;
 import java.util.Random;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Barrera barrera = new Barrera(3);
 
         Thread t1 = new Thread(() -> {

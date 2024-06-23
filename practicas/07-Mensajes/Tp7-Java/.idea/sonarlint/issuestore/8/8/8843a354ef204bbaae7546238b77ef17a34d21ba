@@ -1,0 +1,8 @@
+
+‚
+java:S1854":Remove this useless assignment to local variable "numero".(ñ÷Ñ¬ûÿÿÿÿ8»°á»2J$b54b1ba9-fb72-49ff-928f-e0a3b1928a4c
+f
+java:S2119"Save and re-use this "Random".(ñ÷Ñ¬ûÿÿÿÿ8Å°á»2J$c2679d70-f5b5-463e-bde4-8374c60364ad
+s
+java:S1481"+Remove this unused "numero" local variable.(ñ÷Ñ¬ûÿÿÿÿ8É°á»2J$9c2684d6-de6f-4b1a-85e1-bc7f4e085ec6
+k	java:S106"+Replace this use of System.out by a logger.(š¼µŒşÿÿÿÿJ$ac9210f7-873e-4a18-80b7-8ed8bf00733b

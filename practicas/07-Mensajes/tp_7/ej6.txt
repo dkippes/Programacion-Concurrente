@@ -1,0 +1,87 @@
+Ejercicio 6. Se desea definir un servicio de codificacion y transmision de informacion llamado
+T. El servicio T recibe la informacion que un cliente C quiere enviar a un servicio remoto R. El
+servicio T es el encargado de codificar cada mensaje recibido desde C y de reenviarlo a R. Puede
+asumir que cuenta con la funcion codificar que se encarga de codificar un mensaje.
+String codificar ( String mensaje )
+
+Se solicita:
+a) Dar el codigo para el servicio T.
+
+b) Suponer ahora que el servicio T debe permitir a un cliente reenviar la informaci ́on a distin-
+tos servicios remotos. Para ello el cliente debe indicar al servicio T qui ́en ser ́a el destinatario
+
+de los mensajes que se enviaran a continuacion (los destinatarios estaran identificados por
+un canal). Por ejemplo, el cliente puede comenzar indicando al servicio T que los mensajes
+que se enviaran a continuacion deberan ser reenviados al servicio remoto 1, luego todos los
+mensajes que envıe a continuacion el cliente, y hasta tanto este no notifique a T que desea
+cambiar el destinatario, deberan ser codificados y reenviados al servicio remoto 1.
+Asumir que el cliente siempre comenzara indicando al servicio T cual es el primer servicio
+remoto al que se deber ́an reenviar los mensajes. Sin embargo, no puede realizar ninguna
+suposicion sobre la cantidad de mensajes que se enviaran a cada servidor remoto.
+Dar una solucion para el servicio T que exhiba el comportamiento descripto.
+
+c) Suponer ahora que para codificar cada mensaje el servicio T necesita contar con una clave
+nueva que es generada por otro servicio de codificacion K. Esta clave sera recibida por el
+servicio T a traves de un canal dedicado. Luego, el servicio T debera codificar cada mensaje
+del cliente utilizando una clave nueva que recibira desde el servicio K. Para realizar la
+codificacion con una clave puede utilizar la siguiente funcion:
+String codificar ( String mensaje , String clave )
+Dar una implementacion para el servicio T descripto anteriormente.
+
+a)
+global Channel channelT = new Channel()
+global Channel channelR = new Channel()
+
+process ServicioT:
+    String msg = channelT.receive()
+    String msgCodificado = codificar(msg)
+    channelR.send(msgCodificado)
+
+process ServicioR:
+
+
+process ClienteT:
+
+
+b)
+global Channel channel = new Channel()
+global List<Channel> channelsR = [new Channel(), new Channel(), new Channel(), ...]
+
+process ServicioT:
+    Req req = channel.receive()
+    String msgCodificado = codificar(msg)
+    Channel channelR = channelsR[req.channelId]
+    channelR.send(msgCodificado)
+
+process ServicioR:
+
+
+process ClienteT:
+
+Request {
+    String msg
+    int channelId
+}
+
+c)
+global Channel channel = new Channel()
+global Channel channelK = new Channel()
+global List<Channel> channelsR = [new Channel(), new Channel(), new Channel(), ...]
+
+process ServicioT:
+    Req req = channel.receive()
+    // Genera la clave el servicioK por un canal dedicado
+    String key = channelK.receive()
+    String msgCodificado = codificar(msg, key)
+    Channel channelR = channelsR[req.channelId]
+    channelR.send(msgCodificado)
+
+process ServicioR:
+
+
+process ClienteT:
+
+Request {
+    String msg
+    int channelId
+}

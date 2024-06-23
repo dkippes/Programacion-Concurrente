@@ -45,9 +45,11 @@ L
 src/ej8/PoisonException.java,f/1/f188c94dcd16ca62124c215ccc289e260a620132
 D
 src/ej8/BufferT.java,2/f/2ff3cfdd553bbc7c31e3df38eec86e9550a63116
+C
+src/ej7/Reader.java,3/d/3d415cb93aa92d1d0e373d1b74cba5b94a435599
 ?
-src/ej8/P1.java,9/d/9db74bafdead4def417b89e50475835b401522bc
-?
-src/ej8/P2.java,b/4/b464ba515aaa0a50f00910bbcf263178078de6b0
-?
-src/ej8/P3.java,b/9/b9e0572532f96658293452119d5caa3848b8685c
+src/ej7/RW.java,8/6/8666fbd84f94a31ff45b7f4831986bd26ab37b7e
+C
+src/ej7/Writer.java,2/d/2d2a9eee8cf046822dea3421a507c13e821da171
+E
+src/ej1/Contador.java,c/5/c5c35430310dd031c2d2b34757a5f27e8467929c

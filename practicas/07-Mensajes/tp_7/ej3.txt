@@ -3,17 +3,34 @@ los clientes pueden acceder mediante oportunos mensajes. Proponer una soluci ́o
 
 global Channel channel = new Channel()
 
-repeat n thread {
-    process client(numero):
-        cprivado = new Channel()
-        req = new Request(numero, cprivado)
-        channel.send(req)
-        print(cprivado.receive())
+repeat n {
+    thread client(tipo):
+        if(tipo == "leer") {
+            Channel cprivado = new Channel()
+            Request req = new Request(tipo, null, cprivado)
+            channel.send(req)
+            print(cprivado.receive())
+        }
+        if(tipo == "escribir") {
+            req.value = generateValue()
+            Request req = new Request(tipo, value, null)
+            channel.send(req)
+        }
 }
 
 process servidor:
+    Object variable = null;
     while(true) {
         req = channel.receive()
-        req.cprivado.send("Hola cliente " + req.numero)
+        if(req.tipo == "leer") {
+            req.cprivado.send(variable)
+        } else if(req.tipo == "escribir") {
+            variable = req.value
+        }
     }
 
+Request {
+    string tipo,
+    Object value,
+    Channel cprivado
+}

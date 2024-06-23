@@ -1,28 +1,25 @@
 
-`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112&"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(îä ò
-Œ
-java:S1130
-"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú7
-@	java:S106"+Replace this use of System.out by a logger.(ı³ÓÆ
-t
-java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
-?	java:S106"+Replace this use of System.out by a logger.(¸ØïU
-E	java:S106"+Replace this use of System.out by a logger.(±éÂÒùÿÿÿÿ
-t
-java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
-E	java:S106"+Replace this use of System.out by a logger.(İè¬øÿÿÿÿ
-@	java:S106""+Replace this use of System.out by a logger.(öôÊ¡
-t
-java:S2142%"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
-@	java:S106("+Replace this use of System.out by a logger.(ºÙ„½
-=
-java:S1128"'Remove this unused import 'ej3.Buffer'.(˜×› 
-F
-java:S1128"+Remove this unused import 'ej3.Consumidor'.(ÂŸÆ˜üÿÿÿÿ
-E
-java:S1128"*Remove this unused import 'ej3.Productor'.(ÍÎáêıÿÿÿÿ
-H
-java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ
+†	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$8ed9b5f4-7fb1-40a3-a4e0-677750e6cf13
+†	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$e88ae4ac-4ad4-4175-85f1-cf387fb343e6
+†	java:S112&"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$edb9e3bf-5488-4429-9cc3-0a66b9eca8d9
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(îä òJ$e7e13573-951c-4bc0-9f33-7c341c3e3f0a
+f	java:S106"+Replace this use of System.out by a logger.(ı³ÓÆJ$1acfe79d-a4e2-4e39-95d4-5b2f9b21bc9d
+š
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$1182766d-a77a-438f-9350-c05c46ac0594
+e	java:S106"+Replace this use of System.out by a logger.(¸ØïUJ$d05c90ad-9e53-4eeb-b7fa-8d9c155155ae
+k	java:S106"+Replace this use of System.out by a logger.(±éÂÒùÿÿÿÿJ$4fee64fb-0bbe-42a3-a031-361cf6f4eb33
+š
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$18cb79f9-3e66-408d-b485-5f98f79a204a
+k	java:S106"+Replace this use of System.out by a logger.(İè¬øÿÿÿÿJ$9c1a37c0-d2d8-4f6b-b6fe-f33dac1e9302
+f	java:S106""+Replace this use of System.out by a logger.(öôÊ¡J$480c1737-3259-4973-9be9-75387876feff
+š
+java:S2142%"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$9b082988-b4ac-4462-aaf1-2ef7c341c5e6
+f	java:S106("+Replace this use of System.out by a logger.(ºÙ„½J$6590603e-85ce-421f-8f9b-b1a5556a03ae
+c
+java:S1128"'Remove this unused import 'ej3.Buffer'.(˜×› J$f6dfc4fe-02c3-467d-a00d-9a405512240d
+l
+java:S1128"+Remove this unused import 'ej3.Consumidor'.(ÂŸÆ˜üÿÿÿÿJ$adad9d6e-2796-40d9-8b6d-c786e262bf73
+k
+java:S1128"*Remove this unused import 'ej3.Productor'.(ÍÎáêıÿÿÿÿJ$590ca5e4-37ff-46f1-afee-69db6532deec
+n
+java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿJ$deeaf2fe-b1ed-4981-b95a-90316ff0cf08

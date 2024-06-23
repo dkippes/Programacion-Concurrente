@@ -1,7 +1,7 @@
 
-	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Â‘èÄÿ1J$2a059980-320b-4d80-a209-6dbcf7f6fc7f
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Èô´ÏúÿÿÿÿJ$7cf42af9-8938-4b90-9c5f-545604822c95
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Â‘èÄÿ1J$bc67c3aa-bbd7-4110-96d8-e0adefef2764
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Èô´ÏúÿÿÿÿJ$8f117b5a-6a70-4832-9bfa-cd1cbd890610
 ¡
-java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8Ğ‘èÄÿ1J$99575319-4dad-4027-9748-fcbbd30e8583
-m	java:S106"+Replace this use of System.out by a logger.(œÌÌ£8å²ïÄÿ1J$7a0e6d15-7cd0-4cb9-b7a7-6ec2cd3b0c8b
-m	java:S106"+Replace this use of System.out by a logger.(ı¦üÖ8ÉøïÄÿ1J$366f3adb-9d40-4236-b39d-967319bffba4
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8Ğ‘èÄÿ1J$76b8d7ac-c74a-4a4f-bac1-bbac8ca06cd8
+m	java:S106"+Replace this use of System.out by a logger.(œÌÌ£8å²ïÄÿ1J$c5f13878-18a2-4752-8bb1-35fa9a1a4cc0
+m	java:S106"+Replace this use of System.out by a logger.(ı¦üÖ8ÉøïÄÿ1J$b9daf6ee-4802-4ea0-8fc2-e90cbcb03f01

@@ -12,7 +12,7 @@ process Servidor:
     while(true) {
         msg1 = c1.receive();
         msg += msg1
-        print(msg);
+
         msg2 = c2.receive();
         msg += msg2
         print(msg);

@@ -1,7 +1,5 @@
 package ej8;
 
-import ej3.Buffer;
-
 public class Worker implements Runnable {
     private int id;
     private BufferT buffer;
@@ -21,7 +19,7 @@ public class Worker implements Runnable {
                 task.run();
             }
         } catch (PoisonException e) {
-            System.out.println("Worker " + id + " Poison Pill, terminando.");
+                System.out.println("Worker " + id + " Poison Pill, terminando.");
             pool.workerDone();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
