@@ -32,31 +32,45 @@ a)
 global Channel channelT = new Channel()
 global Channel channelR = new Channel()
 
-process ServicioT:
+// Codificacion y transmision -> Recibe informacion de C y la reenvia a R
+process ServicioT {
     String msg = channelT.receive()
     String msgCodificado = codificar(msg)
     channelR.send(msgCodificado)
+}
 
-process ServicioR:
+process ServicioR {
+}
 
 
-process ClienteT:
+process ClienteT {
+}
 
 
 b)
 global Channel channel = new Channel()
-global List<Channel> channelsR = [new Channel(), new Channel(), new Channel(), ...]
+global []Channel channelsR = [new Channel(), new Channel(), new Channel(), ...]
 
-process ServicioT:
-    Req req = channel.receive()
-    String msgCodificado = codificar(msg)
-    Channel channelR = channelsR[req.channelId]
-    channelR.send(msgCodificado)
+// Reenviar info a distintos servicios R por cliente
+process ServicioT {
+    Channel channelR;
+    while(true) {
+        Req req = channel.receive()
+        String msgCodificado = codificar(msg)    
+        if(req.channelId != null) {
+            Channel channelR = channelsR[req.channelId]
+        }
+        channelR.send(msgCodificado)
+    }
+}
 
-process ServicioR:
+process ServicioR {
+
+}
 
 
-process ClienteT:
+process ClienteT(String msg, int channelId) {
+}
 
 Request {
     String msg
@@ -66,20 +80,29 @@ Request {
 c)
 global Channel channel = new Channel()
 global Channel channelK = new Channel()
-global List<Channel> channelsR = [new Channel(), new Channel(), new Channel(), ...]
+global []Channel channelsR = [new Channel(), new Channel(), new Channel(), ...]
 
-process ServicioT:
-    Req req = channel.receive()
-    // Genera la clave el servicioK por un canal dedicado
-    String key = channelK.receive()
-    String msgCodificado = codificar(msg, key)
-    Channel channelR = channelsR[req.channelId]
-    channelR.send(msgCodificado)
+process ServicioT {
+    Channel channelR;
+    while(true) {
+        Req req = channel.receive()
+        String key = channelK.receive() // Canal dedicado
+        String msgCodificado = codificar(msg, key)
+        if(req.channelId != null) {
+            Channel channelR = channelsR[req.channelId]
+        }
+        channelR.send(msgCodificado)
+    }
+}
 
-process ServicioR:
+process ServicioR {
+
+}
 
 
-process ClienteT:
+process ClienteT {
+
+}
 
 Request {
     String msg

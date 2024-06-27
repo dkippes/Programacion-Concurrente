@@ -1,0 +1,40 @@
+Ejercicio 6. Se desea implementar el monitor Promise, que representa un c ́omputo que con-
+cluir ́a en alg ́un momento y devolver ́a un resultado. El monitor posee los siguientes m ́etodos:
+
+get(), que devuelve el resultado del c ́omputo, bloqueando al thread que lo invoca mientras
+el resultado no est ́a disponible; y 
+set(object), que asigna el resultado, desbloqueando a cualquier thread esperando en el
+monitor.
+Adem ́as se desea que Promise implemente la interfaz Future, que s ́olo declara el m ́etodo
+get. De esta manera una funci ́on que desea devolver su resultado de manera asincr ́onica, puede
+crear un Promise e iniciar un thread para que sete el valor una vez haya concluido el computo
+necesario. La funci ́on puede devolver el Promise como un Future, evitando as ́ı que alguien m ́as
+pueda setear el valor.
+Ejemplo:
+Future asynch ( Object x ) {
+    promise = new Promise ();
+    thread {
+        // computo costo en funcion de x que genera un resultado
+        promise . set ( resultado );
+    }
+    return promise ;
+}
+
+monitor Promise implements Future {
+    Object resultado
+
+    @Override
+    get() {
+        while(resultado == null) {
+            wait()
+        }
+        tmp = resultado
+        resultado = null
+        return tmp
+    }
+
+    set(Object o) {
+        resultado = o
+        notify()
+    }
+}

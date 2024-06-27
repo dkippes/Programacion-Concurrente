@@ -1,0 +1,28 @@
+Ejercicio 4. Se desea implementar usando monitores una barrera para coordinar a N threads.
+Una barrera provee una  ́unica operaci ́on denominada esperar. La idea es que cada uno de los
+N threads invocar ́an la operaci ́on esperar una vez y el efecto de invocarla es que el thread se
+bloquea y no puede continuar hasta tanto los restantes threads invoquen a la operaci ́on esperar.
+Por ejemplo, si miBarrera es una barrera para coordinar 3 threads, el uso de miBarrera en los
+siguientes threads
+
+thread T1 : { print ( ’a ’ ); miBarrera . esperar (); print (1); }
+thread T2 : { print ( ’b ’ ); miBarrera . esperar (); print (2); }
+thread T3 : { print ( ’c ’ ); miBarrera . esperar (); print (3); }
+
+garantiza que todas las letras se mostrar ́an antes de los n ́umeros. Dar una implementaci ́on para
+el monitor barrera tal que una vez alcanzado el cupo, la barrera quede levantada, es decir, que
+no vuelva a bloquear invocaciones al m ́etodo esperar.
+
+monitor Barrera {
+    int esperas = 3;
+    boolean flag = true
+
+    esperar() {
+        esperas--
+        while(esperas != 0 && flag) {
+            wait()
+        }
+        flag == false
+        notify()
+    }
+}

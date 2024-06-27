@@ -1,0 +1,83 @@
+Ejercicio 8. Se desea implementar usando mensajes una simulaci ́on llamada el Juego de la
+Vida. El Juego de la Vida procede en un universo en forma de grilla bidimensional en donde cada
+celda puede estar viva o muerta. La simulaci ́on progresa generaci ́on tras generaci ́on siguiendo
+los cambios en las celdas de la grilla a partir de una configuraci ́on inicial. Cada celda interact ́ua
+con sus 8 celdas vecinas siguiendo las siguientes reglas:
+Una celda viva con estrictamente menos de dos vecinos vivos muere de soledad.
+Una celda viva con dos o tres vecinos vivos, continua viviendo.
+Una celda viva con estrictamente m ́as de tres vecinos vivos, muere por sobrepoblaci ́on.
+Una celda muerta con exactamente tres vecinos vivos se convierte en una celda viva por
+efecto de reproducci ́on.
+Implemente:
+a) Un proceso Timer que toma por par ́ametro: (i) un canal para la recepci ́on de pedidos de
+registro; (ii) un entero que indica la frecuencia (en mili-segundos) con la que se generar ́an
+“ticks”; y (iii) un entero que indica la cantidad m ́ınima de clientes registrados necesaria para
+empezar a generar “ticks”. Una vez alcanzada la cantidad m ́ınima de clientes registrados,
+el Timer debe por siempre generar mensajes “tick” con una cadencia (aproximada) dada
+por par ́ametro, enviado el mensaje a todos los clientes registrados hasta el momento.
+Nota: Como parte de la resoluci ́on debe definir el protocolo entre el Timer y sus clientes,
+por lo que se solicita que indique claramente el tipo de los mensajes intercambiados.
+b) Un proceso Cell que toma por par ́ametro: (i) un canal por donde recibe el estado de sus
+vecinas; (ii) una lista con exactamente 8 canales por donde puede comunicar su estado a
+sus vecinas; (iii) un canal que identifica a un proceso Timer; y (iv) un booleano que indica
+si inicialmente est ́a viva o muerta. La Cell debe registrarse al Timer y ante cada mensaje
+“tick” recibido debe enviar su estado a sus vecinas, recibir el estado de sus 8 vecinas, y
+finalmente actualizar su estado siguiendo las reglas enunciadas.
+
+a)
+process Timer(Channel chRecepPedidos, int frecuencia, int cantMinClientesReg) {
+    Request[] reqs = []
+    Request req = chRecepPedidos.receive() // Recibe pedido
+    reqs.append(req)
+    int contClientes = 0
+    int horaAnterior = horaActual()
+    if(contClientes >= cantMinClientesReg) {
+        while(true) {
+            int horaActual = horaActual()
+            if(horaActual >= horaAnterior + frecuencia) {
+                for(int i=0; i < reqs.length; i++) {
+                    reqs[i].chPrivado.send("tick al cliente: " + reqs[i].id)
+                }
+                horaAnterior = horaActual
+            }
+        }
+    }
+}
+
+Request {
+    int id
+    Channel chPrivado
+}
+
+b)
+process Cell(Channel chEstadosVecinos, Channel[8] chComEstadosVecinos, Channel chTimer, bool estadoCel) {
+    int id = generateId()
+    Channel chpriv = new Channel()
+    Request req = new Request(id, chpriv)
+    chTimer.send(req) // Se registra en Timer
+    String msg = chpriv.receive() // Recive mensaje tick y debe enviar su estado a las vecinas
+    if(msg == "tick") {
+        int vecinosVivos = 0
+
+        // Enviar su estado a las vecinas
+        chEstadosVecinos.send(estadoCel)
+
+        // Recibir el estado de sus 8 vecinas
+        for(int i=0; i < chComEstadosVecinos.length; i++) {
+            //thread(vecinosVivos) {
+                vecinosVivos =+ chComEstadosVecinos[i].receive()
+            //}
+        }
+
+        // Actualizar su estado segun condiciones
+        if(vecinosVivos < 2) {
+            estadoCel = false
+        } else if(vecinosVivos == 2 || vecinosVivos == 3) {
+            estadoCel = true
+        } else if(vecinosVivos > 3) {
+            estadoCel = false
+        } else if(!estadoCel && vecinosVivos == 3) {
+            estadoCel = true
+        }
+    }    
+}

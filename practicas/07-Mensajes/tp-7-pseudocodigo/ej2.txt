@@ -8,22 +8,21 @@ global Channel c1 = new Channel();
 global Channel c2 = new Channel();
 
 process Servidor:
-    msg = "";
     while(true) {
-        msg1 = c1.receive();
+        String msg = "";
+        String msg1 = c1.receive();
+        String msg2 = c2.receive();
         msg += msg1
-
-        msg2 = c2.receive();
         msg += msg2
         print(msg);
     }
 
-process Client1(msg):
+process Client1(String msg):
     while(true) {
         c1.send(msg);
     }
 
-process Client2:
+process Client2(String msg):
     while(true) {
         c2.send(msg);
     }

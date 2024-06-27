@@ -1,23 +1,23 @@
 Ejercicio 5. Se desea definir un servidor que provea el siguiente comportamiento: por cada
 cliente que se conecta debe generar un numero pseudoaleatorio entero en el rango [0,10]. Los
-
 clientes deben intentar adivinar el numero generado por el servidor. Para ello env ́ıan sucesiva-
 mente mensajes conteniendo un numero. Cada mensaje es contestado por el servidor indicando
-
 si el cliente acert ́o o no. Notar que el cliente no puede enviar un nuevo mensaje hasta tanto el
 servidor no le conteste el anterior.
 
 global Channel channel = new Channel()
 
-process Servidor:
+process Servidor {
     Request req = channel.receive()
     thread(req) {
         // Inicio primera conexion
-        boolean acerto = false
-        int numeroRandom = generarNumeroRandom()
         Channel cprivadoCliente = req.cprivadoCliente
         Channel cprivadoServidor = req.cprivadoServidor
-        acerto = numeroRandom == numeroCliente
+        boolean acerto = false
+        int numeroRandom = generarNumeroRandom()
+        if(numeroRandom == req.numero) {
+            acerto = true
+        }
         cprivadoServidor.send(acerto)
 
         while(!acerto) {
@@ -28,24 +28,23 @@ process Servidor:
             cprivadoServidor.send(acerto)
         }
     }
+}
 
-repeat n:
-    thread{
-        process Cliente():
-            // Inicio primera conexion, creo canal
-            Channel cprivadoCliente = new Channel()
-            Channel cprivadoServidor = new Channel()
-            int numero = generarNumero()
-            Request req = new Request(numero, cprivadoCliente, cprivadoServidor)
-            channel.send(req)
-            boolean acerto = cprivadoServidor.receive()
+process Cliente {
+        // Inicio primera conexion, creo canal
+        Channel cprivadoCliente = new Channel()
+        Channel cprivadoServidor = new Channel()
+        int numero = generarNumero()
+        Request req = new Request(numero, cprivadoCliente, cprivadoServidor)
+        channel.send(req)
+        boolean acerto = cprivadoServidor.receive()
 
-            while(!acerto) {
-                numero = generarNumero()
-                cprivadoCliente.send(numero)
-                acerto = cprivadoServidor.receive()
-            }
-    }
+        while(!acerto) {
+            numero = generarNumero()
+            cprivadoCliente.send(numero)
+            acerto = cprivadoServidor.receive()
+        }
+}
 
 Request {
     int numero,

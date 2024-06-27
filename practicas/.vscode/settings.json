@@ -1,0 +1,4 @@
+{
+    "terminal.integrated.allowMnemonics": false,
+    "git.terminalGitEditor": true
+}

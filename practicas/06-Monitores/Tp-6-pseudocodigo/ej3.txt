@@ -1,0 +1,62 @@
+Ejercicio 3. Implementar lo siguiente utilizando monitores:
+a) Un buffer (FIFO) de n ́umeros enteros cuya dimensi ́on est ́a prefijada al momento de su
+creaci ́on.
+b) Una clase productor (que extienda de Thread) que agregue n ́umeros naturales consecutivos
+a un buffer dado al momento de creaci ́on.
+c) Una clase consumidor (que extienda de Thread) que muestre por pantalla los valores que
+toma de un buffer pasado al momento de su creaci ́on.
+d) Un programa que cree un buffer de dimensi ́on 2 y active concurrentemente un consumidor
+y un productor.
+
+monitor Buffer(int N) {
+    int[N] data = new int[N+1]; // Se le agrega un espacio de mas [[x] [x] [x] [fin]] -> Buffer de 3
+    int inicio = 0, fin = 0;
+
+    escribir(int n) {
+        while(estaLleno()) {
+            wait()
+        }
+        data[inicio] = n;
+        inicio = proximo(inicio)
+        notifyAll()
+    }
+
+    int leer() {
+        while(estaVacio()) {
+            wait()
+        }
+        resultado = data[fin]
+        fin = proximo(fin);
+        notifyAll();
+        return resultado;
+    }
+
+    boolean estaLleno() {
+        return proximo(inicio) == fin
+    }
+
+    boolean estaVacio() {
+        return inicio == fin
+    }
+
+    int proximo(int i) {
+        return (i+1)%(N+1)
+    }
+}
+
+Thread Productor(Buffer buffer) {
+    buffer.escribir()
+}
+
+Thread Consumidor(Buffer buffer) {
+    buffer.leer()
+}
+
+Main {
+    buffer = new Buffer(2)
+    consumidor = new Consumidor(buffer)
+    productor = new Productor(buffer)
+
+    consumidor.start()
+    productor.start()
+}

@@ -1,0 +1,79 @@
+Ejercicio 7. Se requiere implementar lo siguiente:
+a) Un monitor RW con un atributo Serializable (i.e., que se puede transformar en una
+representaci ́on binaria) y m ́etodos beginRead, endRead, beginWrite y endWrite. De forma
+tal que m ́ultiples threads pueda “leer” el dato serializable concurrentemente, pero que
+asegurando acceso en exclusi ́on mutua el las escrituras.
+b) Una clase Writer que extienda de Thread que escriba un dato en el campo del monitor
+(asuma la existencia de un m ́etodo serialize no-synchronized, cuya ejecuci ́on toma alg ́un
+tiempo).
+c) Una clase Reader que extienda de Thread que lea el dato del campo del monitor (asuma
+la existencia de una m ́etodo deserialize no-synchronized, cuya ejecuci ́on toma alg ́un
+tiempo).
+
+d) Un programa que cree un monitor y active concurrentemente dos escritores y cuatro lec-
+tores.
+
+e) Si su soluci ́on le da la prioridad a uno de los dos tipos de threads, modif ́ıquelo de forma
+tal de que sea el otro thread el que tenga la prioridad de entrada.
+
+monitor RW {
+    Serializable data
+    int lectores = 0
+    int escritores = 0
+
+    beginRead() {
+        while(escritores != 0) {
+            wait()
+        }
+        lectores++
+    }
+
+    endRead() {
+        lectores--
+        if(lectores == 0) {
+            notify()
+        }
+    }
+
+    beginWrite() {
+        while(lectores != 0 || escritores != 0) {
+            wait()
+        }
+        escritores++
+    }
+
+    endWrite() {
+        escritores--
+        notifyAll() // Si no hago notifyAll van a ver lectores que se queden en la variable condicion
+    }
+
+    String deserializar() {
+        // Deserializa
+    }
+
+    serializar(String s) {
+        // Serializa
+    }
+}
+
+Thread Writer(RW rw) {
+    rw.beginWrite()
+    rw.serializar()
+    rw.endWrite()
+}
+
+Thread Reader(RW rw) {
+    rw.beginRead()
+    rw.deserializar()
+    rw.endRead()
+}
+
+Main {
+    rw = new RW()
+    escritor1 = new Writer(rw)
+    escritor2 = new Writer(rw)
+    lector1 = new Reader(rw)
+    lector2 = new Reader(rw)
+    lector3 = new Reader(rw)
+    lector4 = new Reader(rw)
+}

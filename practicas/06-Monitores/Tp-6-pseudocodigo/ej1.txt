@@ -1,0 +1,14 @@
+Ejercicio 1. Implementar un monitor Contador que permita incrementar y decrementar con-
+currentemente de forma segura.
+
+monitor Contador {
+    int contador;
+
+    incrementar() {
+        contador++;
+    }
+
+    decrementar() {
+        contador--;
+    }
+}

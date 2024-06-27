@@ -1,0 +1,22 @@
+Ejercicio 5. Se desea implementar el monitor Event con m ́etodos publish y suscribe. Los
+threads suscriptores a un evento deben esperar hasta que otro thread publique su ocurrencia,
+momento en el cual todos los suscriptores bloqueados contin ́uan su ejecuci ́on. Tenga en cuenta
+que un suscriptor siempre debe bloquearse hasta que se ejecute el siguiente publish, es decir,
+ignorando las invocaciones a public previas.
+
+
+monitor Event {
+    int publicados = 0
+
+    publish() {
+        publicados++
+        notifyAll() // Saca todos del variable condicion y se ponen a competir con el lock
+    }
+
+    suscribe() {
+        int publicadosActuales = publicados
+        while(publicadosActuales == publicados) {
+            wait()
+        }
+    }
+}

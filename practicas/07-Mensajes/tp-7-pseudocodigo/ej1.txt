@@ -7,12 +7,12 @@ correspondiente, lo env ́ıe al cliente y sea este  ́ultimo el que lo muestre 
 tambi ́en el c ́odigo para el cliente.
 
 a)
-global Channel c1 = new Channel ();
+global Channel channel = new Channel ();
 
 process Servidor: {
     int cantidad = 0;
     while(true) {
-        string tipo = c1.receive();
+        string tipo = channel.receive();
         if(tipo == "cuenta) {
             print(cantidad);
             cantidad = 0;
@@ -25,16 +25,16 @@ process Servidor: {
 
 
 process Cliente(String tipo): {
-    c1.send(tipo);
+    channel.send(tipo);
 }
 
 b)
-global Channel c1 = new Channel ();
+global Channel channel = new Channel();
 
 process Servidor: {
     int cantidad = 0;
     while(true) {
-        req = c1.receive();
+        req = channel.receive();
         if(req.tipo == "cuenta) {
             req.cprivado.send(cantidad);
             cantidad = 0;
@@ -49,7 +49,7 @@ process Servidor: {
 process Cliente(String tipo): {
     cprivado = new Channel()
     req = new Request(tipo, cprivado)
-    c1.send(req);
+    channel.send(req);
     if(tipo == "cuenta") {
         int cantidad = cprivado.receive()
         print(cantidad)
