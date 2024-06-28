@@ -1,0 +1,170 @@
+Ejercicio 1. [Monitores] Se desea implementar un monitor para coordinar m ́ultiples threads
+que participan de un proceso de encoding de video. En este escenario un thread actua como
+productor de cuadros de video crudos (sin compresi ́on), mientras que otros threads consumen
+paquetes de cuadros para realizar el proceso de compresi ́on (encoding). Dado que los cuadros de
+video crudo son pesados, se desea que en ning ́un momento se almacenen m ́as de M cuadros en
+el monitor (i.e., bloqueando al productor de cuadros).
+a) Implemente un monitor Encoder con m ́etodos putRawFrame(frame) (invocado por el th-
+read productor de cuadros crudos) y getPack() (invocado por los threads encargados de la
+
+compresi ́on). En este punto considere que el m ́etodo getPack retorna una lista de P cua-
+dros crudos (con P constante y menor o igual que M). Es decir, la ejecuci ́on de getPack
+
+debe bloquearse haste que haya P cuadros disponibles.
+
+a)
+// No tiene que almacenarse mas de M cuadros, se blockea el productor
+monitor Encoder(int P, int M) {
+    []frames frames = new frames[M+1]
+    int inicio = 0, fin = 0;
+
+    putRawFrame(frame) { // Productor - sin compresion
+        while(estaLleno()) {
+            wait()
+        }
+        frames[inicio] = frame;
+        inicio = proximo(inicio)
+        notifyAll()
+    }
+
+    []frames getPack() { // Consumidor - compresion
+        []packFrames = []
+        int i = 0
+        while(i != P)
+            while(estaVacio()) {
+                wait()
+            }
+            packFrames[i] = frames[fin]
+            fin = proximo(fin);
+            i++
+            notifyAll();
+        }
+        return packFrames
+    }
+
+    boolean estaLleno() {
+        return proximo(inicio) == fin
+    }
+
+    boolean estaVacio() {
+        return inicio == fin
+    }
+
+    int proximo(int i) {
+        return (i+1)%(N+1)
+    }
+}
+
+b) Modifique el punto anterior de forma tal que los consumidores de cuadros puedan para-
+metrizar la cantidad de cuadros con la que desean trabajar. Es decir, considere el m ́etodo
+
+getPack(int p) que toma por par ́ametro la cantidad de cuadros a incluir en un paquete
+e ignore la constante P del punto anterior.
+
+b)
+// No tiene que almacenarse mas de M cuadros, se blockea el productor
+monitor Encoder(int M) { // P <= M
+    []frames frames = new frames[M+1]
+    int inicio = 0, fin = 0;
+
+    putRawFrame(frame) { // Productor - sin compresion
+        while(estaLleno()) {
+            wait()
+        }
+        frames[inicio] = frame;
+        inicio = proximo(inicio)
+        notifyAll()
+    }
+
+    []frames getPack(int p) { // Consumidor - compresion
+        []packFrames = []
+        int i = 0
+        int packNecesarios = p
+        while(i != packNecesarios)
+            while(estaVacio()) {
+                wait()
+            }
+            packFrames[i] = frames[fin]
+            fin = proximo(fin);
+            i++
+            notifyAll();
+        }
+        return packFrames
+    }
+
+    boolean estaLleno() {
+        return proximo(inicio) == fin
+    }
+
+    boolean estaVacio() {
+        return inicio == fin
+    }
+
+    int proximo(int i) {
+        return (i+1)%(N+1)
+    }
+}
+
+c) Extienda el punto anterior agregando un m ́etodo adicional que almacena en el monitor un
+paquete de cuadros ya encodeados, putEncodedPack(encodedPack). Este m ́etodo tiene
+como precondici ́on que s ́olo puede llamarse luego de una invocaci ́on a getPack, e indica
+que se concluy ́o la compresi ́on del paquete de cuadros. En este punto se desea que se
+limite la cantidad de threads realizando tareas de encoding concurrentemente a K (con
+K constante). Es decir, que luego de K ejecuciones de getPack las siguientes se bloqueen
+hasta que se ejecute alguno de los putEncodedPack correspondientes.
+
+c)
+// No tiene que almacenarse mas de M cuadros, se blockea el productor
+monitor Encoder(int M, int K) { // P <= M, donde K = cant thread de encoding
+    []frames frames = new frames[M+1]
+    int inicio = 0, fin = 0;
+    int cantEncondedPack = 0;
+
+    putEncodedPack(encodedPack) {
+        while(cantEncondedPack == k) {
+            wait()
+        }
+        cantEncondedPack--
+        notifyAll()
+    }
+
+    putRawFrame(frame) { // Productor - sin compresion
+        while(estaLleno()) {
+            wait()
+        }
+        frames[inicio] = frame;
+        inicio = proximo(inicio)
+        notifyAll()
+    }
+
+    []frames getPack(int p) { // Consumidor - compresion
+        []packFrames = []
+        int i = 0
+        int packNecesarios = p
+        while(i != packNecesarios)
+            while(estaVacio()) {
+                wait()
+            }
+            packFrames[i] = frames[fin]
+            fin = proximo(fin);
+            i++
+            notifyAll();
+        }
+        cantEncondedPack++
+        return packFrames
+    }
+
+    boolean estaLleno() {
+        return proximo(inicio) == fin
+    }
+
+    boolean estaVacio() {
+        return inicio == fin
+    }
+
+    int proximo(int i) {
+        return (i+1)%(N+1)
+    }
+
+
+}
