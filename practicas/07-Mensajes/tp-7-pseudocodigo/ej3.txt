@@ -16,7 +16,7 @@ process Client(String tipo, Object value = null) { // Por defecto es null
     }
 }
 
-process Servidor:
+process Servidor {
     Object variable = null;
     while(true) {
         req = channel.receive()
@@ -26,6 +26,7 @@ process Servidor:
             variable = req.value
         }
     }
+}
 
 Request {
     String tipo,

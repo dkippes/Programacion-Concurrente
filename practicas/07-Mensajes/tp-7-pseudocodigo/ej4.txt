@@ -24,7 +24,7 @@ process Client(String msg):
 b)
 global Channel channel = new Channel()
 
-process ServidorTrimming:
+process ServidorTrimming { // Soportar N (no acotado) clientes
     while(true) {
         Request req = channel.receive()
         thread(req) {
@@ -32,12 +32,14 @@ process ServidorTrimming:
             req.cprivado.send(msgTrim)
         }
     }
+}
 
-thread Client(msg):
+process Client(msg) {
         Channel cprivado = new Channel()
         Request req = new Request(msg, cprivado)
         channel.send(req)
         print("Msg Trim: " + cprivado.receive())
+}
 
 Request {
     string msg,

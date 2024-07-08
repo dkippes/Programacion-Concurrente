@@ -78,7 +78,7 @@ process ClienteC(msg) {
 // Esta solucion no garantiza el order de resultados, ya que otro thread puede terminar antes
 
 c)
-process ServicioP(int msgSoportadosS) { // Variante difícil
+process ServicioP(int msgSoportadosS) { // Servidor se comunica con servidorS mandandole msgs ordenados al cliente
     int i = 0;
     Channel[] fromPtoS = [ch1,ch11];
     Channel[] fromStoP = [ch2,ch22];

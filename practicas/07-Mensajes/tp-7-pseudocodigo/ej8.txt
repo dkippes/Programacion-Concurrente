@@ -92,3 +92,54 @@ process Cell(Channel chEstadosVecinos, Channel[8] chComEstadosVecinos, Channel c
         }
     }    
 }
+
+
+
+
+
+
+// Lectores-Escritores - Prioridad Escritores
+global Semaphore permisoE = new Semaphore(1);
+global Semaphore mutexL = new Semaphore(1);
+global Semaphore mutexP = new Semaphore(1);
+global Semaphore mutexE = new Semaphore(1);
+global int lectores = 0;
+global int escritores = 0;
+
+Escritor() {
+	mutexE.acquire();
+	escritores++;
+	if (escritores == 1)
+		permisoL.acquire();
+	mutexE.release();
+	
+	permisoE.acquire();
+	escribir();
+	permisoE.release();
+	
+	mutexE.acquire();
+	escritores--;
+	if (escritores == 0)
+		permisoL.release();
+	mutexE.release();
+}
+
+Lector() {
+	mutexP.acquire();
+	permisoL.acquire();
+	mutexL.acquire();
+	lectores++;
+	if (lectores == 1)
+		permisoE.acquire();
+	mutexL.release();
+	permisoL.release();
+	mutexP.release();
+	
+	leer();
+	
+	mutexL.acquire();
+	lectores--;
+	if (lectores == 0)
+		permisoE.release();
+	mutexL.release();
+}

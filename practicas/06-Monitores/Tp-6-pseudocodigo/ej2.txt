@@ -2,6 +2,7 @@ Ejercicio 2. Definir un monitor Sem ́aforo que implemente las operaciones de un
 (acquire y release). ¿Garantiza su soluci ́on ausencia de starvation?
 
 monitor Semaforo(int N) {
+    // No garantiza que haya ausencia de starvation ya que se pone a competir por el lock de igual a igual con otro thread
     int permisos = N;
 
     release() {
@@ -17,4 +18,3 @@ monitor Semaforo(int N) {
     }
 }
 
-No garantiza que haya ausencia de starvation ya que se pone a competir por el lock de igual a igual con otro thread
