@@ -1,0 +1,48 @@
+Ejercicio 4. Dados los siguientes threads:
+Semaphore permisoA = new Semaphore(1)
+Semaphore permisoF = new Semaphore(0)
+Semaphore permisoE = new Semaphore(1)
+Semaphore permisoH = new Semaphore(0)
+Semaphore permisoC = new Semaphore(1)
+Semaphore permisoG = new Semaphore(0)
+
+thread {
+    while(true) {
+        permisoA.acquire()
+        print(’A’);
+        permisoF.release()
+        print(’B’);
+        permisoC.acquire()
+        print(’C’);
+        permisoG.release()
+        print(’D’);
+    }
+}
+
+thread {
+    while(true) {
+        permisoE.acquire()
+        print(’E’);
+        permisoH.release()
+        permisoF.acquire()
+        print(’F’);
+        permisoA.release()
+        print(’G’);
+        permisoC.release()
+    }
+}
+
+thread {
+    while(true) {
+        permisoH.acquire()
+        print(’H’);
+        permisoE.release()
+        print(’I’);
+    }
+}
+
+Agregar sem ́aforos para garantizar que simult ́aneamente se den las siguientes condiciones:
+La cantidad de ‘F’ es menor o igual a la cantidad de ‘A’. F <= A
+La cantidad de ‘H’ es menor o igual a la cantidad de ‘E’. H <= E
+La cantidad de ‘C’ es menor o igual a la cantidad de ‘G’. C <= G
+A -> F -> E -> H -> G -> C

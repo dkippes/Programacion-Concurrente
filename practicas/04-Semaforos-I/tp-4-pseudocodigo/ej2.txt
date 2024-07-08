@@ -1,0 +1,24 @@
+Ejercicio 2. Dados los siguientes threads:
+Semaphore permisoA = new Semaphore(0)
+Semaphore permisoC = new Semaphore(0)
+Semaphore permisoO = new Semaphore(0)
+
+thread {
+    permisoA.acquire()
+    print(’C’);
+    permisoC.release()
+    print(’E’);
+    permisoO.release()
+}
+
+thread {
+    print(’A’);
+    permisoA.release()
+    permisoC.acquire()
+    print(’R’);
+    permisoO.release()
+    permisoO.acquire(2)
+    print(’O’);
+}
+
+Utilizar sem ́aforos para garantizar que las  ́unicas salidas posibles sean ACERO y ACREO.

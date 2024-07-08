@@ -51,21 +51,15 @@ b)
 global Channel c3 = new Channel()
 global Channel c4 = new Channel()
 
-process ServicioP(int msgSoportados) {
-    while(true) {
-        String msg = c3.receive() // Recibe msg de cliente
-        if(msgSoportados != 0) {
-            thread(msg, msgSoportados) {
-                msgSoportados--
+process ServicioP(int msgSoportados) { // Se asume que es un solo cliente
+    repeat msgSoportados {
+        thread(msg) {
+            while(true) {
+                String msg = c3.receive() // Recibe msg de cliente
                 c1.send(msg) // Manda el calculo a procesar
                 String calculo = c2.receive() // Espera recibir el calculo
                 c4.send(calculo) // Devuelve el calculo al cliente
-                msgSoportados++
             }
-        } else {
-            c1.send(msg) // Manda el calculo a procesar
-            String calculo = c2.receive() // Espera recibir el calculo
-            c4.send(calculo)
         }
     }
 }
@@ -84,43 +78,31 @@ process ClienteC(msg) {
 // Esta solucion no garantiza el order de resultados, ya que otro thread puede terminar antes
 
 c)
-process ServicioP(int msgSoportadosS1, int msgSoportadosS2) {
-    int contador = 0;
-    while(true) {
-        String msg = c3.receive() // Recibe msg de cliente
-        if(msgSoportadosS1 != 0 && msgSoportadosS1 > msgSoportadosS2) { // Si todavia tiene espacio y ademas tiene mas espacio que el otro servidor
-            thread(msg, msgSoportadosS1) {
-                msgSoportadosS1--
-                c1.send(msg) // Manda el calculo a procesar a S1
-                String calculo = c2.receive() // Espera recibir el calculo de S1
+process ServicioP(int msgSoportadosS) { // Variante difícil
+    int i = 0;
+    Channel[] fromPtoS = [ch1,ch11];
+    Channel[] fromStoP = [ch2,ch22];
+    Channel myCh = new Channel();
 
-                c4.send(calculo) // Devuelve el calculo al cliente
-                msgSoportadosS1++
-            }
-        } 
-        if(msgSoportadosS2 != 0 && msgSoportadosS2 > msgSoportadosS1) { // Si todavia tiene espacio y ademas tiene mas espacio que el otro servidor
-            thread(msg, msgSoportadosS2) {
-                msgSoportadosS2--
-                c11.send(msg) // Manda el calculo a procesar a S2
-                String calculo = c22.receive() // Espera recibir el calculo de S2
+    repeat(msgSoportadosS*2) {
+        myCh.send("Go!");
+    }
 
-                c4.send(calculo) // Devuelve el calculo al cliente
-                msgSoportadosS2++
-            }
-        }
-        // Balanceo la carga si los 2 llegaron a su tope
-        if(msgSoportadosS1 == 0 && msgSoportadosS2 == 0) {
-            if(contador % 2 == 0) {
-                c1.send(msg) // Manda el calculo a procesar a S1        
-                String calculo = c2.receive() // Espera recibir el calculo de S1
-                c4.send(calculo)
-                contador++
-            } else {
-                c11.send(msg) // Manda el calculo a procesar a S2
-                String calculo = c22.receive() // Espera recibir el calculo de S2
-                c4.send(calculo)
-            }
-            contador++
+    Thread T1(myCha, fromPtoS) {
+        while(true) {
+            int j = 0;
+            String calc = fromStoP[j].receive();
+            ch4.send(calc);
+            j = (j+1) % 2;
+            myCh.send("Go!");
         }
     }
+
+    while(true) {
+        myCh.receive(); // Actúa como barrera
+        String msj = ch3.receive();
+        fromPtoS[i].send(msj);
+        i = (i+1) % 2;
+    }
 }
+

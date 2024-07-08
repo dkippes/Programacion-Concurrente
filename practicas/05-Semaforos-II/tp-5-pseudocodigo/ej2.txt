@@ -1,0 +1,167 @@
+Ejercicio 2. Para cruzar un determinado r ́ıo, se tiene un peque ̃no bote que lleva a la gente
+que lo necesite de una costa a la otra. El bote tiene capacidad para una persona y s ́olo hace
+el recorrido en una direcci ́on (el viaje de regreso se hace en otro bote). Las personas se van
+acercando a la orilla de partida y esperan poder subir al bote, en orden de llegada. Aquella que
+lo logra, se sube y se acomoda en el asiento (lo cual toma unos minutos), luego de lo cual el bote
+sale hacia la costa opuesta. Durante ese inter ́ın, la persona a bordo debe esperar. Al llegar, la
+persona debe descender (que, de nuevo, toma algo de tiempo), y una vez que termin ́o de bajar,
+el bote regresa a la costa original para tomar a la siguiente persona.
+a) Modele el escenario descrito utilizando un thread para el bote y uno para cada persona
+que llegue a la costa. Modele las esperas a realizar mediante el uso de sem ́aforos.
+b) Suponga ahora que se cuenta con un transbordador con capacidad para N personas. Ahora,
+el barco lleva gente tanto en el viaje de ida como en el de regreso, teniendo la siguiente
+din ́amica.
+Empieza en la costa este.
+Espera en una costa hasta llenarse.
+Viaja hasta la costa oeste.
+Amarra, permitiendo que los pasajeros desciendan.
+Repite el procedimiento desde el principio en la costa actual.
+Se proponen dos variantes:
+a) Cuando el bote llega a una costa, espera que todos sus ocupantes terminen de bajar
+antes de permitir subir a la gente que est ́a esperando all ́ı.
+b) Cuando el bote llega a una cosa, la gente empieza a bajar y subir en forma concurrente,
+s ́olo se busca que no hayan m ́as de N personas sobre el barco en un momento dado.
+Recuerde modelar los elementos del problema con sem ́aforos (capacidad, permiso para
+abordar, permiso para descender, etc).
+
+a)
+Semaphore permisoSubir = new Semaphore(1, True)
+Semaphore ocuparAsciento = new Semaphore(0)
+Semaphore permisoBajar = new Semaphore(0)
+
+thread bote {
+    costa = 0
+    while(true) {
+        permisoSubir.release()
+        ocuparAsciento.acquire()
+        // viajar(costa)
+        permisoBajar.release()
+        liberarAsciento.acquire()
+        costa = (costa+1)%2
+        // viajar(costa)
+        costa = (costa+1)%2
+    }
+}
+
+thread persona {
+    permisoSubir.acquire()
+    // sentar()
+    ocuparAsciento.release()
+    permisoBajar.acquire()
+    // bajar()
+    liberarAsciento.release()
+}
+
+b)
+Semaphore[] permisoSubir = [new Semaphore(0, True), new Semaphore(0, True)]
+Semaphore permisoBajar = [new Semaphore(0), new Semaphore(0)]
+Semaphore ocuparAsciento = new Semaphore(0)
+Semaphore liberarAsciento = new Semaphore(0)
+
+Bote(int N) {
+    costa = 0
+    while(true) {
+        permisoSubir[costa].release(N)
+        ocuparAsciento.acquire(N)
+        costa = (costa+1)%2
+        // viajar(costa)
+        permisoBajar[costa].release(N)
+        liberarAsciento.release(N)
+    }
+}
+
+Persona(costaP) {
+    permisoSubir[costaP].acquire()
+    // sentar()
+    ocuparAsciento.release()
+    costaContraria = (costaP+1)%2
+    permisoBajar[costaContraria].acquire()
+    // bajar()
+    liberarAsciento.release()
+}
+
+
+
+
+// a)
+Process Node(List<Channel> neighbors, Channel nodeCh, Channel regCh {
+  // registrarse en el timer
+  Channel myTimerChannel = new Channel;
+  regCh.send(myTimerChannel);
+  uid = random()
+  int max_uid = uid;
+  bool leader = False;
+
+    while(true) {
+        Request req = myTimerChannel.receive();
+        switch (req.type){  
+        case "TICK":
+            for (Channel c : neighbors) 
+            c.send(max_uid);   
+            for(int i = 0; i < neighbors.size(); ++i){
+                resp =  nodeCh.receive();
+                max_uid = resp if resp > max_uid else max_uid;
+            } 
+        case "START":
+            leader = False;
+            uid = random();
+            max_uid = uid;
+        case "END":
+            leader = max_uid == uid;
+        case "COMPUTE": // para el c
+            if (leader)
+                thread(){req.ch.send(compute())};   
+        }      
+    }
+}
+
+// b)
+process Timer(int diameter, Channel regCh, int freq_ms, Channel clientCh){
+  Channel leaderElectionCh = new Channel();
+  Channel listCh = new Channel();
+  new nodeHandler(regCh, listCh, leaderElectionCh).start();
+  new clientsHandler(listCh, clientCh).start(); // para el c)
+  listCh.send([])
+  List nodes = new List();
+
+  while(true) {
+    leaderElectionCh.receive();
+    nodes = listCh.receive();
+    listCh.send(nodes);
+    for (Channel c : nodes) c.send("START");
+    sleep(freq_ms)
+    for(int i = 0; i < diameter; i++)
+      for (Channel c : nodes) 
+        c.send("TICK");
+      sleep(freq_ms);
+    for (Channel c : nodes) c.send("END");
+  }
+}
+
+thread nodeHandler(Channel regCh, Channel listCh, Channel leaderElectionCh) {
+    List pending_Channels = new List()
+    while(true){
+      Channel c = regCh.receive();
+      pending_channels = listCh.receive().append(c);
+      listCh.send(pending_channels);
+      if (pending_channels.size() % 10 == 0 && pending_channels.size() > 10)
+        leaderElectionCh.send(True);
+    }
+}
+
+// c) // se agrega al Timer este thread
+thread clientsHandler(Channel listCh, Channel clientCh){
+  while(true){
+    Request req = clientCh.receive();
+    thread(req, listCh){
+      Channel respCh = new Channel();
+      nodes = listCh.receive();
+      listCh.send(nodes);
+      for (Channel c : nodes) 
+        c.send(Request("compute", respCh));
+      req.ch.send(respCh.receive());
+    }
+  } 
+}
+
+

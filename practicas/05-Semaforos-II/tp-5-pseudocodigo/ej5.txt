@@ -1,0 +1,83 @@
+Ejercicio 5. Se desea implementar un sistema de control para una estaci ́on de servicio con 6
+puestos de carga. El sistema debe garantizar que en ning ́un momento puede haber m ́as de 6
+veh ́ıculos cargando combustible y que la atenci ́on se produce en orden de llegada. Adem ́as, la
+estaci ́on cuenta con 1 puesto para el abastecimiento de combustible que es provisto por camiones
+que arriban con mucha menor frecuencia que los clientes. Por lo tanto se requiere garantizar que
+no m ́as de un cami ́on pueda descargar combustible al mismo tiempo.
+a) Identifique los roles activos y los recursos compartidos.
+b) De una soluci ́on considerando que el abastecimiento de combustible no puede hacerse al
+mismo tiempo que la carga a clientes y que los camiones tienen prioridad por sobre los
+veh ́ıculos. ¿Es su soluci ́on libre de inanici ́on?
+
+a)
+Semaphore puestoAuto = new Semaphore(6, true);
+Semaphore puestoCamion = new Semaphore(1, true);
+
+Auto() {
+    puestoAuto.acquire()
+    // Auto carga combustible
+    puestoAuto.release()
+}
+
+Camion() {
+    puestoCamion.acquire()
+    // Camion carga combustible
+    puestoCamion.release()
+}
+
+b)
+// Auto
+Semaphore mutexA = new Semaphore(1, true);
+Semaphore mutexP = new Semaphore(1, true);
+Semaphore cargarCombustibleAuto = new Semaphore(6, true);
+Semaphore permisoA = new Semaphore(1, true);
+int autos = 0
+
+// Camion
+Semaphore mutextC = new Semaphore(1, true);
+Semaphore cargarCombustibleCamion = new Semaphore(1, true);
+int camiones = 0
+
+Auto() {
+    mutexP.acquire()
+    permisoA.acquire()
+    mutexA.acquire()
+    autos++
+    if(autos == 1) {
+        permisoC.acquire()
+    }
+    mutexA.release()
+    permisoA.release()
+    mutexP.release()
+
+    cargarCombustibleAuto.acquire()
+    // cargar()
+    cargarCombustibleAuto.release()
+
+    mutexA.acquire()
+    autos--
+    if(autos == 0) {
+        permisoC.release()
+    }
+    mutexA.release()
+}
+
+Camion() {
+    mutextC.acquire(); // Seccion critica de suma
+    camiones++
+    if (camiones == 1) {
+        permisoA.acquire(); // Roba 1 permiso a los autos (No permite que entren autos a la estacion de servicio)
+    }
+    mutextC.release(); // Fin seccion critica (suma)
+
+    cargarCombustibleCamion.acquire(); // Pide permiso para cargar combustible
+    // cargar()
+    cargarCombustibleCamion.release(); // Libera el puesto de carga
+
+    mutextC.acquire(); // Seccion critica de resta
+    camiones--
+    if (camiones == 0) {
+        permisoA.release();
+    }
+    mutextC.release(); // Fin seccion critica (resta)
+}

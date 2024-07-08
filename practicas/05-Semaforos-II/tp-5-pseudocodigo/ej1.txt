@@ -1,0 +1,29 @@
+Ejercicio 1. Se busca computar la suma de los primeros N n ́umeros impares utilizando dos
+threads que cooperen entre s ́ı para resolver esta tarea. Para ello, se quiere subdividir el problema
+de manera que uno de ellos se encargue de generar el pr ́oximo impar que deber ́a acumular el otro.
+Adem ́as, los threads solo comparten dos variables: N que se inicializa con el total de n ́umeros
+impare a sumar y SUMA que se inicializa en 0 y representa la sumatoria parcial. Al finalizar el
+c ́omputo, el thread generador debe mostrar el valor correcto de la sumatoria.
+
+int n = N
+int suma = 0
+Semaphore permisoG = new Semaphore(1)
+Semaphore permisoS = new Semaphore(1)
+
+Generados() {
+    while(n > 0) {
+        permisoG.acquire()
+        n = n - 1
+        permisoS.release()
+    }
+    permisoG.acquire()
+    print(suma)
+}
+
+Acumulados() {
+    while(true) {
+        permisoS.acquire()
+        suma = suma + 2*n+1
+        permisoG.release()
+    }
+}

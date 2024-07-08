@@ -1,0 +1,36 @@
+Ejercicio 6. En una oficina hay un ba ̃no unisex con 8 toiletes. A lo largo del d ́ıa, distintas
+personas entran a utilizarlo. Si sucede que en ese momento todos los toiletes est ́an ocupados,
+las personas esperan hasta que alguno se libere. Por otra parte, peri ́odicamente el personal de
+limpieza debe pasar a mantener las instalaciones en condiciones. La limpieza del ba ̃no no se
+puede hacer mientras haya gente dentro del mismo, por lo que si en ese momento hay personas
+utilizando alg ́un toilete o esperando que se libere alguno, el personal de limpieza debe esperar a
+que el ba ̃no se vac ́ıe completamente. En contraparte, si hay un empleado de limpieza trabajando
+en el ba ̃no, las personas que quieran utilizarlo deber ́an esperar a que termine.
+
+a) Modele esta situaci ́on utilizando sem ́aforos como mecanismo de sincronizaci ́on (puede mod-
+elar al personal de limpieza como un  ́unico thread).
+
+b) Modifique la soluci ́on anterior para contemplar el caso donde el personal de limpieza tiene
+prioridad. Es decir, si hay un empleado de limpieza esperando para hacer el mantenimiento,
+las siguientes personas que lleguen deben esperar a que logre terminar la limpieza.
+
+b)
+Semaphore permisoPersona = new Semaphore(8, true);
+Semaphore mutexP = new Semaphore(1, true);
+Semaphore permisoEntrar = new Semaphore(1, true);
+
+PersonalLimpieza() {
+    permisoEntrar.acquire(); // Pide permiso para entrar al baño
+    permisoPersona.acquire(8); // Roba el permiso a las personas
+    permisoEntrar.release();
+    permisoPersona.release(8);
+}
+
+Persona() {
+    mutexP.acquire(); // Esto evita que el personal de limpieza empere de mas (prioridad)
+    permisoEntrar.acquire(); // Pide permiso para entrar al baño
+    permisoPersona.acquire();
+    permisoEntrar.release();
+    mutexP.release();
+    permisoPersona.release();
+}

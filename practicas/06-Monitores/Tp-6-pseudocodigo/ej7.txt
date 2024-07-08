@@ -16,6 +16,7 @@ tores.
 e) Si su soluci ́on le da la prioridad a uno de los dos tipos de threads, modif ́ıquelo de forma
 tal de que sea el otro thread el que tenga la prioridad de entrada.
 
+// Ninguno tiene prioridad
 monitor RW {
     Serializable data
     int lectores = 0
@@ -76,4 +77,78 @@ Main {
     lector2 = new Reader(rw)
     lector3 = new Reader(rw)
     lector4 = new Reader(rw)
+}
+
+
+// Prioridad lectores
+monitor RW {
+    Serializable data
+    int lectores = 0
+    int escritores = 0
+    int esperandoLectores = 0
+
+    beginRead() {
+        esperandoLectores++
+        while(escritores > 0) {
+            wait()
+        }
+        esperandoLectores--
+        lectores++
+    }
+
+    endRead() {
+        lectores--
+        if(lectores == 0) {
+            notifyAll()
+        }
+    }
+
+    beginWrite() {
+        while(lectores > 0 || escritores > 0 || esperandoLectores > 0) {
+            wait()
+        }
+        escritores++
+    }
+
+    endWrite() {
+        escritores--
+        notifyAll() // Si no hago notifyAll van a ver lectores que se queden en la variable condicion
+    }
+}
+
+
+// Prioridad escritores
+monitor RW {
+    Serializable data
+    int lectores = 0
+    int escritores = 0
+    int esperandoEscritores = 0
+
+    beginRead() {
+        while(escritores > 0 || esperandoEscritores > 0) {
+            wait()
+        }
+        lectores++
+    }
+
+    endRead() {
+        lectores--
+        if(lectores == 0) {
+            notifyAll()
+        }
+    }
+
+    beginWrite() {
+        esperandoEscritores++
+        while(escritores == 1 || lectores > 0) {
+            wait()
+        }
+        esperandoEscritores--
+        escritores++
+    }
+
+    endWrite() {
+        escritores--
+        notifyAll() // Si no hago notifyAll van a ver lectores que se queden en la variable condicion
+    }
 }

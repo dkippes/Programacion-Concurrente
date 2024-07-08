@@ -1,0 +1,42 @@
+Ejercicio 4. Para balancear el g ́enero entre sus asistentes, un boliche decidi ́o implementar el
+siguiente mecanismo de control de acceso: No se permitir ́a que la diferencia entre cantidades de
+hombres y mujeres en el establecimiento sea mayor que 1. Cada persona que llegue al boliche
+debe asegurarse de que tiene permitido el acceso. Si no lo tiene, esperar ́a hasta que finalmente
+pueda hacerlo. Una vez que una persona entr ́o al boliche, se quedar ́a bailando indefinidamente.
+a) Modele este comportamiento utilizando Sem ́aforos.
+
+b) Extienda la soluci ́on anterior contemplando que el boliche tiene una capacidad de 50 per-
+sonas. Cada persona que logra entrar al boliche ocupa un lugar, y como estos nunca se
+
+liberan, en alg ́un momento el boliche estar ́a lleno. En ese momento, toda persona que
+llegue deber ́a retirarse sin tener la posibilidad de ingreso. Aseg ́urese, tambi ́en, que ninguna
+persona se quede esperando indefinidamente.
+
+a)
+Semaphore[] permisoEntrar = [new Semaphore(1), new Semaphore(1)]
+
+Persona(sexo) {
+    permisoEntrar[sexo].acquire()
+    permisoEntrar[1-sexo].release()
+    // bailar()
+}
+
+b)
+Semaphore[] permisoEntrar = [new Semaphore(1), new Semaphore(1)]
+Semaphore mutexSuma = new Semaphore(1)
+int N = 50
+
+Persona(sexo) {
+    permisoEntrar[sexo].acquire()
+    mutexSuma.acquire()
+    if(N == 0) {
+        permisoEntrar[sexo].release()
+        // salir()
+        mutexSuma.release()
+    } else {
+        N--
+        mutexSuma.release()
+        permisoEntrar[1-sexo].release()
+        // bailar()
+    }
+}

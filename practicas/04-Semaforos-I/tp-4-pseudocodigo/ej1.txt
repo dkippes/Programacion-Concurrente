@@ -1,0 +1,22 @@
+Ejercicio 1. Dados los siguientes threads
+Semaphore permisoA = new Semaphore(0)
+Semaphore permisoC = new Semaphore(0)
+
+thread { // A -> F -> C
+    print(’A’);
+    permisoA.release()
+    print(’B’);
+    permisoC.acquire()
+    print(’C’);
+}
+
+thread {
+    print(’E’);
+    permisoA.acquire()
+    print(’F’);
+    permisoC.release()
+    print(’G’);
+}
+
+Utilizar sem ́aforos para garantizar que, simult ́aneamente, ‘A’ se muestra antes que ‘F’, y ‘F’
+se muestra antes que ‘C’.

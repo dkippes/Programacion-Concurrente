@@ -1,0 +1,31 @@
+Ejercicio 3. En un gimnasio hay cuatro aparatos, cada uno para trabajar un grupo muscular
+distinto. Los aparatos son cargados con discos (el gimnasio cuenta con 20 discos, todos del mismo
+peso). Cada cliente del gimnasio posee una rutina que le indica qu ́e aparatos usar, en qu ́e orden
+y cuanto peso utilizar en cada caso (asuma que la rutina es una lista de tuplas con el n ́umero de
+aparato a usar y la cantidad de discos cargar, la rutina podr ́ıa incluir repeticiones de un mismo
+aparato). Como norma el gimnasio exige que cada vez que un cliente termina de utilizar un
+aparato descargue todos los discos y los coloque en el lugar destinado a su almacenamiento (lo
+que incluye usos consecutivos del mismo aparato).
+a) Indique cuales son los recursos compartidos y roles activos.
+b) Escriba un c ́odigo que simule el funcionamiento del gimnasio, garantizando exclusi ́on mutua
+en el acceso a los recursos compartidos y que est ́e libre de deadlock y livelock.
+Ayuda: Considere modelar a los clientes como threads (cada uno con su propia rutina) y a
+los aparatos como un arreglo de sem ́aforos.
+
+Concepto => rutina[<aparato>, <disco>]
+
+Semaphore[] maquina = [new Semaphore(1, True), new Semaphore(1, True), new Semaphore(1, True), new Semaphore(1, True)] // 4 aparatos
+Semaphore discos = new Semaphore(20)
+Semaphore tomarDisco = new Semaphore(1, True)
+
+Cliente(Rutina rut) {
+    for ej : rut {
+        maquina[ej[0]].acquire() // Pido maquina
+        tomarDisco.acquire() // Cola para tomar discos
+        discos.acquire(ej[1])
+        tomarDisco.release() 
+        // hace ejercicio
+        discos.release(ej[1]) // Libero los discos
+        maquina[ej[0]].release() // Termino de usar la maquina
+    }
+}

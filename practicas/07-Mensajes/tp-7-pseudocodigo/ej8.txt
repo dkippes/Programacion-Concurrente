@@ -26,23 +26,34 @@ finalmente actualizar su estado siguiendo las reglas enunciadas.
 
 a)
 process Timer(Channel chRecepPedidos, int frecuencia, int cantMinClientesReg) {
-    Request[] reqs = []
-    Request req = chRecepPedidos.receive() // Recibe pedido
-    reqs.append(req)
-    int contClientes = 0
-    int horaAnterior = horaActual()
-    if(contClientes >= cantMinClientesReg) {
+    Channel varClientes = new Channel()
+    Channel varNewClient = new Channel()
+    varNewClient.send("ok")
+
+    thread {
+        Request[] reqs = []
+        int i = 0
         while(true) {
-            int horaActual = horaActual()
-            if(horaActual >= horaAnterior + frecuencia) {
-                for(int i=0; i < reqs.length; i++) {
-                    reqs[i].chPrivado.send("tick al cliente: " + reqs[i].id)
-                }
-                horaAnterior = horaActual
+            Request req = chRecepPedidos.receive() // Recibe pedido
+            reqs[i] = req
+            i++
+            if(cantMinClientesReg >= i) {
+                varNewClient.receive() // Si hay nuevo registro se queda blockeado hasta que termine el for
+                varClientes.send(reqs) // Barrera para nuevos registros
             }
         }
     }
+
+    while(true) {
+        Request[] clients = varClientes.receive()
+        for(int i=0; i < reqs.length; i++) {
+            reqs[i].chPrivado.send("tick")
+        }
+        varNewClient.send("ok")
+        sleep(frecuencia)
+    }
 }
+
 
 Request {
     int id
