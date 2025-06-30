@@ -1,3 +1,8 @@
+La cantidad de ‘F’ es menor o igual a la cantidad de ‘A’. F <= A
+La cantidad de ‘H’ es menor o igual a la cantidad de ‘E’. H <= E
+La cantidad de ‘C’ es menor o igual a la cantidad de ‘G’. C <= G
+
+
 Ejercicio 4. Dados los siguientes threads:
 Semaphore permisoA = new Semaphore(1)
 Semaphore permisoF = new Semaphore(0)

@@ -28,8 +28,9 @@ a)
 Semaphore permisoSubir = new Semaphore(1, True)
 Semaphore ocuparAsciento = new Semaphore(0)
 Semaphore permisoBajar = new Semaphore(0)
+Semaphore liberarAsciento = new Semaphore(0)
 
-thread bote {
+Bote() {
     costa = 0
     while(true) {
         permisoSubir.release()
@@ -38,15 +39,16 @@ thread bote {
         permisoBajar.release()
         liberarAsciento.acquire()
         costa = (costa+1)%2
-        // viajar(costa)
+        // viajar(costa) -> Sin gente
         costa = (costa+1)%2
     }
 }
 
-thread persona {
+Persona() {
     permisoSubir.acquire()
     // sentar()
     ocuparAsciento.release()
+    
     permisoBajar.acquire()
     // bajar()
     liberarAsciento.release()
@@ -59,7 +61,7 @@ Semaphore ocuparAsciento = new Semaphore(0)
 Semaphore liberarAsciento = new Semaphore(0)
 
 Bote(int N) {
-    costa = 0
+    int costa = 0
     while(true) {
         permisoSubir[costa].release(N)
         ocuparAsciento.acquire(N)
@@ -70,7 +72,7 @@ Bote(int N) {
     }
 }
 
-Persona(costaP) {
+Persona(int costaP) {
     permisoSubir[costaP].acquire()
     // sentar()
     ocuparAsciento.release()

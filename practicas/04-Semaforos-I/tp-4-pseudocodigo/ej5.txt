@@ -1,0 +1,24 @@
+global int x = 0;
+Semaphore mutex = new Semaphore(1)
+
+
+thread T1 : {
+    mutex.acquire()
+    x = x + 1;
+    mutex.release()
+}
+
+thread T2 : {
+    mutex.acquire()
+    x = x + 2;
+    mutex.release()
+}
+
+thread T3 : {
+    mutex.acquire()
+    x = x + 3;
+    mutex.release()
+}
+
+
+// X tiene que ser 6

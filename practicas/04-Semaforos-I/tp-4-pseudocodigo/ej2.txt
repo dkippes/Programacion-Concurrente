@@ -1,3 +1,5 @@
+́unicas salidas posibles sean ACERO y ACREO.
+
 Ejercicio 2. Dados los siguientes threads:
 Semaphore permisoA = new Semaphore(0)
 Semaphore permisoC = new Semaphore(0)

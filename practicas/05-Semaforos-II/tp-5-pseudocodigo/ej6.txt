@@ -15,22 +15,26 @@ prioridad. Es decir, si hay un empleado de limpieza esperando para hacer el mant
 las siguientes personas que lleguen deben esperar a que logre terminar la limpieza.
 
 b)
-Semaphore permisoPersona = new Semaphore(8, true);
+Semaphore usarBano = new Semaphore(8, true);
 Semaphore mutexP = new Semaphore(1, true);
 Semaphore permisoEntrar = new Semaphore(1, true);
 
 PersonalLimpieza() {
     permisoEntrar.acquire(); // Pide permiso para entrar al baño
-    permisoPersona.acquire(8); // Roba el permiso a las personas
+    usarBano.acquire(8); // Roba el permiso a las personas
     permisoEntrar.release();
-    permisoPersona.release(8);
+    // Limpiando baño
+    usarBano.release(8);
 }
 
 Persona() {
     mutexP.acquire(); // Esto evita que el personal de limpieza empere de mas (prioridad)
     permisoEntrar.acquire(); // Pide permiso para entrar al baño
-    permisoPersona.acquire();
+    usarBano.acquire();
     permisoEntrar.release();
     mutexP.release();
-    permisoPersona.release();
+    // Persona usa baño
+    usarBano.release();
 }
+
+// P P P P P P P P L P P P 

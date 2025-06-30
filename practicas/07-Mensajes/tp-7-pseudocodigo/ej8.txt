@@ -28,28 +28,31 @@ a)
 process Timer(Channel chRecepPedidos, int frecuencia, int cantMinClientesReg) {
     Channel varClientes = new Channel()
     Channel varNewClient = new Channel()
-    varNewClient.send("ok")
 
     thread {
-        Request[] reqs = []
+        List<Request> reqs = []
         int i = 0
         while(true) {
             Request req = chRecepPedidos.receive() // Recibe pedido
-            reqs[i] = req
+            reqs = varClientes.receive() // Garantiza Exclusion mutua
+            reqs.append(req)
             i++
-            if(cantMinClientesReg >= i) {
-                varNewClient.receive() // Si hay nuevo registro se queda blockeado hasta que termine el for
-                varClientes.send(reqs) // Barrera para nuevos registros
+            varClientes.send(reqs) // Mando nuevos registros
+            if(cantMinClientesReg == i) {
+                // varNewClient.receive() // Si hay nuevo registro se queda blockeado hasta que termine el for
+                varNewClient.send("pasar")
             }
         }
     }
 
-    while(true) {
+    varNewClient.receive()
+
+    while(true) { // Compartir memoria usando un Channel. 
         Request[] clients = varClientes.receive()
-        for(int i=0; i < reqs.length; i++) {
+        for(int i=0; i < reqs.length; i++) { // Procesado
             reqs[i].chPrivado.send("tick")
         }
-        varNewClient.send("ok")
+        varClientes.send(clients)
         sleep(frecuencia)
     }
 }

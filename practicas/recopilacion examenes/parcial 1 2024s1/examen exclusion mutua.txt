@@ -1,0 +1,51 @@
+1. Exclusion mutua
+Considere la siguiente propuesta de solucion para el problema de exclusion mutua
+
+global char siguienteEsperando = "A"
+global char siguienteEjecutando = "A"
+global int ocupante = -1
+
+thread(int id) {
+    //SNC
+    char miLetra = obtenerLetra()
+    while(siguienteEjecutando != miLetra) {
+        while(entrar(id));
+    }
+    //SC
+    ocupante = -1
+    pasarAlProximo()
+    //SNC
+}
+
+char obtenerLetra() {
+    char letra = siguienteEsperando
+    siguienteEjecutando = rotar(letra)
+    return letra
+}
+
+void pasarAlProximo() {
+    siguienteEjecutando = rotar(siguienteEjecutando)
+}
+
+bool entrar(int id) {
+    if(ocupante != -1) {
+        return true
+    }
+    ocupante = id
+    return false
+}
+
+char rotar(char letra) {
+    switch(letra) {
+        case "A" return "B"
+        case "B" return "C"
+        case "C" return "A"
+    }
+}
+
+Considere el caso que hay solo 3 threads cuyos ids son distintos y resuelva:
+a) Determine si la solucion propuesta cumple la propiedad de Mutex
+b) Determine si la solucion propuesta cumple la propiedad de Garantia de entrada
+c) Considere ahora que obtenerLetra(), pasarAlProximo() y entrar(id) son atomicas.
+Resuelte el problema de exclusion mutua para 3 threads? Que sucede si se considera una cantidad no acotada
+de threads (todos ids distintos)?

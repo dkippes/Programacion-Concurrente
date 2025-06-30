@@ -1,3 +1,5 @@
+‘A’ se muestra antes que ‘F’, y ‘F’ se muestra antes que ‘C’.
+
 Ejercicio 1. Dados los siguientes threads
 Semaphore permisoA = new Semaphore(0)
 Semaphore permisoC = new Semaphore(0)

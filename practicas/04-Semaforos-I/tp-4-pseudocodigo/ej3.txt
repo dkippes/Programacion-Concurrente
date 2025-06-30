@@ -1,3 +1,5 @@
+Unico resultado: R I O OK OK OK
+
 Ejercicio 3. Considerar los siguientes tres threads:
 Semaphore permisoI = new Semaphore(0)
 Semaphore permisoO = new Semaphore(0)
@@ -24,6 +26,3 @@ thread {
     permisoOk.release(2)
     print("OK");
 }
-
-Utilizar sem ́aforos para garantizar que el  ́unico resultado impreso ser ́a R I O OK OK OK
-(asumimos que print es at ́omico).

@@ -1,0 +1,64 @@
+thread
+    while (true)
+        print ( ’A ’ );
+
+thread
+    while (true)
+        print ( ’B ’ );
+
+
+
+/*
+a) Utilice sem ́aforos para garantizar que en todo momento la cantidad de A y B difiera como
+m ́aximo en 1.
+b) Modifique la soluci ́on para que la  ́unica salida posible sea ABABABABAB...
+c) Modifique la soluci ́on para que la  ́unica salida posible sea ABBABBABB...
+
+a) // Puede empezar indistintamente A y B
+Semaphore permitirA = new Semaphore(1)
+Semaphore permitirB = new Semaphore(1)
+
+thread
+    while (true)
+        permitirA.acquire()
+        print ( ’A ’ );
+        permitirB.release()
+
+thread
+    while (true)
+        permitirB.acquire()
+        print ( ’B ’ );
+        permitirA.release()
+
+b) // ABABABABAB
+Semaphore permitirA = new Semaphore(1)
+Semaphore permitirB = new Semaphore(0)
+
+thread
+    while (true)
+        permitirA.acquire()
+        print ( ’A ’ );
+        permitirB.release()
+
+thread
+    while (true)
+        permitirB.acquire()
+        print ( ’B ’ );
+        permitirA.release()
+
+b) // ABBABBABB
+Semaphore permitirA = new Semaphore(2)
+Semaphore permitirB = new Semaphore(0)
+
+thread
+    while (true)
+        permitirA.acquire(2)
+        print ( ’A ’ );
+        permitirB.release(2)
+
+thread
+    while (true)
+        permitirB.acquire()
+        print ( ’B ’ );
+        permitirA.release()
+*/

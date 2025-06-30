@@ -7,7 +7,7 @@ correspondiente, lo env ́ıe al cliente y sea este  ́ultimo el que lo muestre 
 tambi ́en el c ́odigo para el cliente.
 
 a)
-global Channel channel = new Channel ();
+global Channel channel = new Channel();
 
 process Servidor: {
     int cantidad = 0;
@@ -17,7 +17,7 @@ process Servidor: {
             print(cantidad);
             cantidad = 0;
         }
-        if(tipo == "sigue) {
+        if(tipo == "sigue") {
             cantidad++;
         }
     }

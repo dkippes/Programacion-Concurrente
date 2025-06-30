@@ -15,7 +15,7 @@ persona se quede esperando indefinidamente.
 a)
 Semaphore[] permisoEntrar = [new Semaphore(1), new Semaphore(1)]
 
-Persona(sexo) {
+Persona(int sexo) {
     permisoEntrar[sexo].acquire()
     permisoEntrar[1-sexo].release()
     // bailar()
@@ -26,7 +26,7 @@ Semaphore[] permisoEntrar = [new Semaphore(1), new Semaphore(1)]
 Semaphore mutexSuma = new Semaphore(1)
 int N = 50
 
-Persona(sexo) {
+Persona(int sexo) {
     permisoEntrar[sexo].acquire()
     mutexSuma.acquire()
     if(N == 0) {

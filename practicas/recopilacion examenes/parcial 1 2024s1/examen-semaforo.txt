@@ -1,0 +1,39 @@
+2. Semaforos
+Como parte de la ampliacion de la red ferroviaria, Trenes Argentinos ha decidido poner en marcha un servicio
+de trenes que conecta la estacion Bernal con Retiro de forma directa. El proyecto plantea habilitar el
+servicio de manera incremental por etapas.
+En la primera comenzaran a circular varios trenes con distintos horarios de partida, llevando pasajeros
+en un solo sentido (Bernal - Retiro) y regresando complemtanete libre a la estacion inicial. Como los andenes
+y estaciones intermedias aun estan en construccion, los trenes no se detienen en ellas y las personas solo
+pueden subirse en Bernal (en la medida que no excedan la capacidad N del tren) y descender en Retiro.
+Cada formacion parte de las cabeceras solo cuando la capacidad se haya llenado (o analogamente vaciado).
+Inicialmente el servicio funciona con trenes identicos, utilizando todos la misma via. Aunque es posible que
+haya varios trenes circulando por el trazado, todos llegaran a la estacion Retiro en el orden en el que salieron
+de Bernal.
+a) Modele el escenario utilizando semaforos como unico mecanismo de sincronizacion. Puede asumir que todos los
+trenes tienen capacidad N y que para todo tren, eventualmente su capacidad se alcanza en la estacion
+Bernal permitiendole partir. De la misma forma, al llegar a Retirno, todas las personas terminan
+bajando. Tenga en cuenta que las acciones del tren (ir a la proxima estacion) y de las personas (subir y 
+bajar de un tren) pueden demorar cierto tiempo. Ademas, por cuestiones de seguridad, se debera garantizar que
+las estaciones terminales (Bernal, Retiro) nunca haya mas de un tren.
+b) Luego de un exitoso comienzo, Trenes Argentinos decide poner en marcha la segunda etapa que consiste en la
+construccion de 8 estaciones intermedias. Durante este periodo, los trenes continuaran sin detenerse en cada una
+de las estaciones. Sin embargo, como parte de la ampliacion del servicio, se encuentra habilitado el recorrido
+Retiro - Bernal. Ambos recorridos pasan por las mismas estaciones, las cuales tienen un anden para la ida y
+otro para la vuelta. Por cuestiones de seguridad los trenes deben disminuir la velocidad al pasar por las 
+estaciones y se debe garantizar que nunca haya mas de un tren en un anden. Ademas, se decidio incorporar nuevos trenes
+a la flota (consiguiendo un total de K trenes) y ampliar las vias de comunicacion alternativas entre estaciones,
+teniendo asi formaciones con distintas velocidades de viaje. Como antes, se puede asumir que los trenes llegara
+a las estaciones cabeceras segun el orden de partida. No obstante, durante el trayecto es posible que,
+debido a las distintas velocidades de viaje, el orden no se mantenga. Modifique la implementacion anterior
+para que contemple el escenario propuesto en la segunda etapa.
+Observacion: Note que, como mucho, podria haber dos formaciones que estan subiendo pasajeros concurrentemente.
+Tren en estacion Bernal por anden ida, tren en Retiro por anden vuelta (analogamente, para descender, 
+tren en Retiro por anden ida y tren en Bernal por anden vuelta).
+c) Finalmente, en la tercera etapa los andenes de todas las estaciones quedan completamente operativos y las personas
+pueden subirse y bajarse en cualquier estacion posterior (puede asumir que ninguna persona se baja en la
+misma estacion que sube). Tenga en cuenta que al llegar a una etacion las personas deberian poder subir y bajar
+del tren de forma concurrente, manteniendo siempre el total de los pasajeros en N. Los trenes siempre esperan que
+haya exactamente N personas al momento de viajar.
+
+

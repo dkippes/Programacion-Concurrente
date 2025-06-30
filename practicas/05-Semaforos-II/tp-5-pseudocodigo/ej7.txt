@@ -1,0 +1,69 @@
+Se desea modelar el control de tr ́ansito de un puente que conecta dos ciudades.
+Dado que el puente es muy estrecho se debe evitar que dos autos circulen al mismo tiempo en
+direcci ́on opuesta, dado que quedar ́ıan atascados.
+Resuelva los siguientes problemas usando sem ́aforos, modelando cada coche como un thread
+independiente que desea atravesar el puente en alguna de las dos direcciones posibles. Tenga
+en cuenta que atravesar el puente no es una acci ́on at ́omica, y por lo tanto, requiere de cierto
+tiempo.
+
+a) De una soluci ́on que permita que varios coches que se desplazan en la misma direcci ́on
+puedan circular simult ́aneamente.
+b) Modifique la soluci ́on anterior para que como m ́aximo 3 coches puedan circular por el
+puente al mismo tiempo.
+c) Indique si la soluci ́on propuesta en el punto b es libre de inanici ́on. Justifique su respuesta.
+
+|--------|
+
+a) 
+Semaphore mutexL = [new Semaphore(1), new Semaphore(1)];
+Semaphore permisoCircular = new Semaphore(1);
+int cantCirculando = [0, 0]
+
+
+Coche(int dir) { // 0 Este - 1 Oeste
+    mutexL[dir].acquire()
+    cantCirculando[dir]++
+    if(cantCirculando[dir] == 1) {
+        permisoCircular.acquire()
+    }
+    mutexL[dir].release()
+
+    CircularHacia(dir)
+
+    mutexL[dir].acquire()
+    cantCirculando[dir]--
+    if(cantCirculando[dir] == 0) {
+        permisoCircular.release()
+    }
+    mutexL[dir].release()
+}
+
+b)
+Semaphore mutexL = [new Semaphore(1), new Semaphore(1)];
+Semaphore permisoCircular = new Semaphore(1, true);
+Semaphore cruzarPuente = new Semaphore(3);
+int cantCirculando = [0, 0]
+
+
+Coche(int dir) { // 0 Este - 1 Oeste
+    mutexL[dir].acquire()
+    cantCirculando[dir]++
+    if(cantCirculando[dir] == 1) {
+        permisoCircular.acquire()
+    }
+    mutexL[dir].release()
+
+    cruzarPuente.acquire() // Max 3 en puente
+    CircularHacia(dir)
+    cruzarPuente.release()
+
+    mutexL[dir].acquire()
+    cantCirculando[dir]--
+    if(cantCirculando[dir] == 0) {
+        permisoCircular.release()
+    }
+    mutexL[dir].release()
+}
+
+c) Puede generar innanicio o starvation porque puede llegar otro auto que va hacia el mismo destino que 
+los del permiso y los del otro lado se quedaran esperando indefinidamente

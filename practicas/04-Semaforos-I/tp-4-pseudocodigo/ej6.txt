@@ -1,0 +1,76 @@
+global int y = 0 , z = 0;
+
+thread {
+    int x ;
+    x = y + z ;
+}
+
+thread {
+    y = 1;
+    z = 2;
+}
+
+/*
+a) ¿Cu ́ales son los posibles valores finales de x?
+b) Para cada uno de los valores finales de x posibles, modifique el programa usando sem ́aforos
+de forma tal que siempre x tenga ese valor al final de la ejecuci ́on (considere que el programa
+modificado siempre debe poder terminar).
+
+a)
+X puede ser 0, 1, 3.
+b)
+------- Para x = 0
+
+global int y = 0 , z = 0;
+Semaphore suma = new Semaphore(0)
+
+
+thread {
+    int x ;
+    x = y + z ;
+    suma.release()
+}
+
+thread {
+    suma.acquire()
+    y = 1;
+    z = 2;
+}
+
+------- Para x = 1
+global int y = 0 , z = 0;
+Semaphore suma = new Semaphore(0)
+Semaphore leerY = new Semaphore(0)
+
+
+thread {
+    int x ;
+    leerY.acquire()
+    x = y + z ;
+    suma.release()
+}
+
+thread {
+    y = 1;
+    leerY.release()
+    suma.acquire()
+    z = 2;
+}
+
+------- Para x = 3
+global int y = 0 , z = 0;
+Semaphore leerXY = new Semaphore(0)
+
+
+thread {
+    int x ;
+    leerXY.acquire()
+    x = y + z ;
+}
+
+thread {
+    y = 1;
+    z = 2;
+    leerXY.release()
+}
+*/
